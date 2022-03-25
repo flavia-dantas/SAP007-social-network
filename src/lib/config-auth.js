@@ -9,10 +9,7 @@ return createUserWithEmailAndPassword(auth, email, password)
     const user = userCredential.user;
     return user;
   })
-  .catch((error) => {
-    const errorMessage = error.message;
-    return errorMessage, errorCode;
-  });
+ 
 }
 
 export function signIn (email, password){
@@ -22,8 +19,5 @@ return signInWithEmailAndPassword(auth, email, password)
     const user = userCredential.user;
     return user;
   })
-  .catch((error) => {
-    const errorMessage = error.message;
-    return errorMessage;
-  });
+  
 };
