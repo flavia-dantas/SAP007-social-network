@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,signOut } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
 
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
@@ -13,6 +13,10 @@ export function createUser(email, password) {
 
 }
 
+export function userLogout() {
+  return signOut(auth)
+}
+
 export function signIn(email, password) {
   return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -22,7 +26,6 @@ export function signIn(email, password) {
     })
 
 };
-
 
 export function googleLogin() {
   return signInWithPopup(auth, provider)
