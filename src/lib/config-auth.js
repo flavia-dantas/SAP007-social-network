@@ -27,3 +27,7 @@ return signInWithEmailAndPassword(auth, email, password)
     return errorMessage;
   });
 };
+
+export function userLogout() {
+  return signOut(auth)
+}
