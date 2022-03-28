@@ -1,7 +1,8 @@
 import '../../lib/config-firebase.js';
-import { userLogout} from '../../lib/config-auth.js';
+import { userLogout } from '../../lib/config-auth.js';
+// import { addDocument } from '../../lib/config-firestore.js';
 
-export default function feed (){
+export default function feed() {
     const container = document.createElement('div');
     const template = `
     <div class="container-feed">
@@ -9,20 +10,21 @@ export default function feed (){
         <button id="logoutButton" class="logout-button">Logout</button>
     </div>
     `;
-     container.innerHTML = template;
+    container.innerHTML = template;
 
+    // addDocument();
 
-     const btnLogout = container.querySelector('#logoutButton');
+    const btnLogout = container.querySelector('#logoutButton');
 
-     btnLogout.addEventListener("click", (e) => {
-         e.preventDefault();
-         userLogout()
-             .then(() => {
-                 window.location.hash = '#login';
-             }).catch((error) => {
-                 return error;
-             });
-     })
-     return container
+    btnLogout.addEventListener("click", (e) => {
+        e.preventDefault();
+        userLogout()
+            .then(() => {
+                window.location.hash = '#login';
+            }).catch((error) => {
+                return error;
+            });
+    })
+    return container
 
 }
