@@ -13,17 +13,17 @@ export default function register() {
             <label class="label-form">E-mail
                 <span class="required-item">*</span>
             </label>
-            <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exeplo.com" required>
+            <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exeplo.com">
             <label class="label-form">Senha
                 <span class="required-item">*</span>
             </label>
-            <input type="password" id="inputPassword" class="input-password" placeholder="******" required>
+            <input type="password" id="inputPassword" class="input-password" placeholder="******">
             <button type="submit" id="btnRegister" class="btn-register">Cadastrar</button>
             <p id="errorMessage" class="error-message"></p>
-            <p class="subtitle">OU</p>
-            <button type="submit" id="btnGoogle" class="btn-google">Continuar com Google</button>
-            <p>Tem uma conta? <a href="/#login">Conecte-se</a></p>
         </form>
+        <p class="subtitle">OU</p>
+        <button type="submit" id="btnGoogle" class="btn-google">Continuar com Google</button>
+        <p>Tem uma conta? <a href="/#login">Conecte-se</a></p>
     </div>
     `;
     container.innerHTML = template;
@@ -33,7 +33,7 @@ export default function register() {
     const btnRegister = container.querySelector('#btnRegister');
     const btnRegisterGoogle = container.querySelector('#btnGoogle');
 
-       
+
     btnRegister.addEventListener('click', (e) => {
         e.preventDefault();
         createUser(email.value, password.value)
