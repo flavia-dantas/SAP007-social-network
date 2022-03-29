@@ -22,7 +22,7 @@ export default function register() {
             <p id="errorMessage" class="error-message"></p>
         </form>
         <p class="subtitle">OU</p>
-        <button type="submit" id="btnGoogle" class="btn-google">Continuar com Google</button>
+        <button type="submit" id="btnGoogle" class="btn-google">Inscreva-se com Google</button>
         <p>Tem uma conta? <a href="/#login">Conecte-se</a></p>
     </div>
     `;
@@ -44,7 +44,6 @@ export default function register() {
                 const errorMessage = error.message;
                 return errorMessage;
             });
-
     });
 
     btnRegisterGoogle.addEventListener('click', (e) => {
@@ -56,7 +55,6 @@ export default function register() {
             }).catch((error) => {
                 console.log(error);
             })
-
     });
     return container;
 }

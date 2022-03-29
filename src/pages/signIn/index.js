@@ -30,7 +30,7 @@ export default function login() {
     const email = container.querySelector('#inputEmail');
     const password = container.querySelector('#inputPassword');
     const btnSignIn = container.querySelector('#btnLogin');
-    const btnLoginGoogle = container.querySelector('#bntGoogle');
+    const btnLoginGoogle = container.querySelector('#btnGoogle');
      
 
     btnSignIn.addEventListener("click", (e) => {
@@ -54,7 +54,6 @@ export default function login() {
             }).catch((error) => {
                 console.log(error);
             })
-
     });
     return container
 
