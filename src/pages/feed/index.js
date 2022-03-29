@@ -25,12 +25,7 @@ export default function feed() {
     const btnPost = container.querySelector('#btnPost');
     const editPost = container.querySelector('#editPost');
 
-    `;
     container.innerHTML = template;
-
-   
-    const btnLogout = container.querySelector('#logoutButton');
-
 
     btnLogout.addEventListener("click", (e) => {
         e.preventDefault();
@@ -43,7 +38,7 @@ export default function feed() {
     })
 
 
-    btnPost.addEventListener("click", (e) =>{
+    btnPost.addEventListener("click", (e) => {
         e.preventDefault();
         createPost(editPost.value);
         console.log("postado!")
