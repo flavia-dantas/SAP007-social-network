@@ -2,6 +2,7 @@ import '../../lib/config-firebase.js';
 import { userLogout } from '../../lib/config-auth.js';
 import { createPost } from '../../lib/config-firestore.js';
 
+
 export default function feed() {
     const container = document.createElement('div');
     const template = `
@@ -9,6 +10,7 @@ export default function feed() {
         <h3>Feed</h3>
         <button id="logoutButton" class="logout-button">Logout</button>
     </div>
+
     <div class="container-post" id="">
         <textarea id="editPost" class="edit-Post"></textarea>
         <button id="btnPost" class="btn-post">Postar</button>
@@ -23,6 +25,13 @@ export default function feed() {
     const btnPost = container.querySelector('#btnPost');
     const editPost = container.querySelector('#editPost');
 
+    `;
+    container.innerHTML = template;
+
+   
+    const btnLogout = container.querySelector('#logoutButton');
+
+
     btnLogout.addEventListener("click", (e) => {
         e.preventDefault();
         userLogout()
@@ -32,6 +41,7 @@ export default function feed() {
                 return error;
             });
     })
+
 
     btnPost.addEventListener("click", (e) =>{
         e.preventDefault();

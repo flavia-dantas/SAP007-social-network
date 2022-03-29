@@ -4,6 +4,7 @@ import { createUser, googleLogin } from '../../lib/config-auth.js';
 export default function register() {
     const container = document.createElement('div');
     const template = `
+
     <div class="container-register">
         <div class="logo"></div>
         <h3>Cadastro</h3>
@@ -20,7 +21,7 @@ export default function register() {
             <button type="submit" id="btnRegister" class="btn-register">Cadastrar</button>
             <p id="errorMessage" class="error-message"></p>
             <p class="subtitle">OU</p>
-            <button type="submit" id="bntGoogle" class="btn-google">Continuar com Google</button>
+            <button type="submit" id="btnGoogle" class="btn-google">Continuar com Google</button>
             <p>Tem uma conta? <a href="/#login">Conecte-se</a></p>
         </form>
     </div>
@@ -30,8 +31,9 @@ export default function register() {
     const email = container.querySelector('#inputEmail');
     const password = container.querySelector('#inputPassword');
     const btnRegister = container.querySelector('#btnRegister');
-    const btnRegisterGoogle = container.querySelector('#bntGoogle');
+    const btnRegisterGoogle = container.querySelector('#btnGoogle');
 
+       
     btnRegister.addEventListener('click', (e) => {
         e.preventDefault();
         createUser(email.value, password.value)

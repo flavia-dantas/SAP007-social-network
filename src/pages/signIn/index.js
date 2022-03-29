@@ -4,6 +4,7 @@ import { signIn } from '../../lib/config-auth.js';
 export default function login() {
     const container = document.createElement('div');
     const template = `
+
     <div class="container-login">
         <div class="logo"></div>
         <h3>Login</h3>
@@ -30,6 +31,7 @@ export default function login() {
     const password = container.querySelector('#inputPassword');
     const btnSignIn = container.querySelector('#btnLogin');
     const btnRegisterGoogle = container.querySelector('#bntGoogle');
+     
 
     btnSignIn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -43,4 +45,5 @@ export default function login() {
             });
     });
     return container
+
 }  
