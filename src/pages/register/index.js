@@ -23,6 +23,9 @@ export default function register() {
             <button type="submit" id="bntGoogle" class="btn-google">Continuar com Google</button>
             <p>Tem uma conta? <a href="/#login">Conecte-se</a></p>
         </form>
+        <p class="subtitle">OU</p>
+        <button type="submit" id="btnGoogle" class="btn-google">Inscrever-se com Google</button>
+        <p>Tem uma conta? <a href="/#login">Conecte-se</a></p>
     </div>
     `;
     container.innerHTML = template;
@@ -46,12 +49,14 @@ export default function register() {
     });
 
     btnRegisterGoogle.addEventListener('click', (e) => {
+        e.preventDefault();
         console.log("Vamos Google")
-        googleLogin().then(() => {
-            window.location.hash = 'feed';
-        }).catch((error) => {
-            console.log(error);
-        })
+        googleLogin()
+            .then(() => {
+                window.location.hash = 'feed';
+            }).catch((error) => {
+                console.log(error);
+            })
 
     });
     return container;
