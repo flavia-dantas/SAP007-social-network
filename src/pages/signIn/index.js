@@ -1,5 +1,5 @@
 import '../../lib/config-firebase.js';
-import { signIn } from '../../lib/config-auth.js';
+import { signIn, googleLogin } from '../../lib/config-auth.js';
 
 export default function login() {
     const container = document.createElement('div');
@@ -12,15 +12,15 @@ export default function login() {
             <label class="label-form">E-mail
                 <span class="required-item">*</span>
             </label>
-            <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exeplo.com" required>
+            <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exeplo.com">
             <label class="label-form">Senha 
                 <span class="required-item">*</span>
             </label>
-            <input type="password" id="inputPassword" class="input-password" placeholder="******" required>
+            <input type="password" id="inputPassword" class="input-password" placeholder="******">
             <button type="submit" id="btnLogin" class="btn-login">Entrar</button>
             <p id="errorMessage" class="error-message"></p>
             <p class="subtitle">OU</p>
-            <button type="submit" id="bntGoogle" class="btn-google">Continuar com Google</button>
+            <button type="submit" id="btnGoogle" class="btn-google">Fazer login com Google</button>
             <p>Não tem uma conta? <a href="/#register">Cadastre-se</a></p>
         </form>
     </div>
@@ -30,7 +30,7 @@ export default function login() {
     const email = container.querySelector('#inputEmail');
     const password = container.querySelector('#inputPassword');
     const btnSignIn = container.querySelector('#btnLogin');
-    const btnRegisterGoogle = container.querySelector('#bntGoogle');
+    const btnLoginGoogle = container.querySelector('#bntGoogle');
      
 
     btnSignIn.addEventListener("click", (e) => {
@@ -43,6 +43,18 @@ export default function login() {
                 const errorMessage = error.message;
                 return errorMessage;
             });
+    });
+
+    btnLoginGoogle.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log("Vamos Google")
+        googleLogin()
+            .then(() => {
+                window.location.hash = 'feed';
+            }).catch((error) => {
+                console.log(error);
+            })
+
     });
     return container
 

@@ -48,12 +48,14 @@ export default function register() {
     });
 
     btnRegisterGoogle.addEventListener('click', (e) => {
+        e.preventDefault();
         console.log("Vamos Google")
-        googleLogin().then(() => {
-            window.location.hash = 'feed';
-        }).catch((error) => {
-            console.log(error);
-        })
+        googleLogin()
+            .then(() => {
+                window.location.hash = 'feed';
+            }).catch((error) => {
+                console.log(error);
+            })
 
     });
     return container;
