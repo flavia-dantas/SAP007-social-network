@@ -8,22 +8,22 @@ const init = () => {
     window.addEventListener('hashchange', () => {
         main.innerHTML = '';
         switch (window.location.hash) {
-            case '#register':
-                main.appendChild(register());
-                break;
             case '#login':
                 main.appendChild(login());
+                break;
+            case '#register':
+                main.appendChild(register());
                 break;
             case '#feed':
             main.appendChild(feed());
             break;
             default:
-                main.appendChild(register());
+                main.appendChild(login());
         }
     });
 };
 
 window.addEventListener('load', () => {
-    main.appendChild(register());
+    main.appendChild(login());
     init();
 });
