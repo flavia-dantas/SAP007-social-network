@@ -30,8 +30,8 @@ export default function login() {
     const email = container.querySelector('#inputEmail');
     const password = container.querySelector('#inputPassword');
     const btnSignIn = container.querySelector('#btnLogin');
-    const btnLoginGoogle = container.querySelector('#bntGoogle');
-     
+    const btnLoginGoogle = container.querySelector('#btnGoogle');
+
 
     btnSignIn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -47,10 +47,9 @@ export default function login() {
 
     btnLoginGoogle.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log("Vamos Google")
         googleLogin()
             .then(() => {
-                window.location.hash = 'feed';
+                window.location.hash = '#feed';
             }).catch((error) => {
                 console.log(error);
             })

@@ -8,7 +8,7 @@ export default function feed() {
     const template = `
     <div class="container-feed">
         <h3>Feed</h3>
-        <button id="logoutButton" class="logout-button">Logout</button>
+        <button id="btnLogout" class="btn-logout">Logout</button>
     </div>
 
     <div class="container-post" id="">
@@ -21,11 +21,16 @@ export default function feed() {
     `;
     container.innerHTML = template;
 
-    const btnLogout = container.querySelector('#logoutButton');
+    const btnLogout = container.querySelector('#btnLogout');
     const btnPost = container.querySelector('#btnPost');
     const editPost = container.querySelector('#editPost');
 
-    container.innerHTML = template;
+    btnPost.addEventListener("click", (e) => {
+        e.preventDefault();
+        createPost(editPost.value);
+        console.log("postado!");
+    })
+
 
     btnLogout.addEventListener("click", (e) => {
         e.preventDefault();
@@ -35,13 +40,6 @@ export default function feed() {
             }).catch((error) => {
                 return error;
             });
-    })
-
-
-    btnPost.addEventListener("click", (e) => {
-        e.preventDefault();
-        createPost(editPost.value);
-        console.log("postado!")
     })
 
     return container
