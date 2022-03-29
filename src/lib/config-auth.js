@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,signOut } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
 
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
@@ -14,6 +14,7 @@ export function createUser(email, password) {
 }
 
 export function userLogout() {
+
   return signOut(auth)
 }
 
