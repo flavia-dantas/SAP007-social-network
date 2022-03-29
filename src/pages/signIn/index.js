@@ -4,20 +4,34 @@ import { signIn } from '../../lib/config-auth.js';
 export default function login() {
     const container = document.createElement('div');
     const template = `
-            <div>
-                <p> Sign In </p>
-                <input type="email" id="email">
-                <input type="password" id="password">
-                <button type="submit" id="btnSignIn">Login</button>
-                <button type="submit" id="btnRegisterGoogle">Entrar com Google</button>
-            </div>
+
+    <div class="container-login">
+        <div class="logo"></div>
+        <h3>Login</h3>
+        <form class="form-login">
+            <label class="label-form">E-mail
+                <span class="required-item">*</span>
+            </label>
+            <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exeplo.com" required>
+            <label class="label-form">Senha 
+                <span class="required-item">*</span>
+            </label>
+            <input type="password" id="inputPassword" class="input-password" placeholder="******" required>
+            <button type="submit" id="btnLogin" class="btn-login">Entrar</button>
+            <p id="errorMessage" class="error-message"></p>
+            <p class="subtitle">OU</p>
+            <button type="submit" id="bntGoogle" class="btn-google">Continuar com Google</button>
+            <p>Não tem uma conta? <a href="/#register">Cadastre-se</a></p>
+        </form>
+    </div>
         `;
     container.innerHTML = template;
 
-    const email = container.querySelector('#email');
-    const password = container.querySelector('#password');
-    const btnSignIn = container.querySelector('#btnSignIn');
-    const btnRegisterGoogle = container.querySelector('#btnRegisterGoogle');
+    const email = container.querySelector('#inputEmail');
+    const password = container.querySelector('#inputPassword');
+    const btnSignIn = container.querySelector('#btnLogin');
+    const btnRegisterGoogle = container.querySelector('#bntGoogle');
+     
 
     btnSignIn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -31,4 +45,5 @@ export default function login() {
             });
     });
     return container
+
 }  
