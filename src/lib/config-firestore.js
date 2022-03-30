@@ -2,13 +2,12 @@ import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/fireba
 
 const db = getFirestore();
 
-export const createPost = async (textPost) => {
+export const createPost = async (textPost, userEmail) => {
     try {
         const docRef = await addDoc(collection(db, "post"), {
             post: textPost,
-            userId: 1,
+            userEmail: userEmail,
             data: new Date(),
-            like: 1,
         });
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
