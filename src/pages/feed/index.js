@@ -1,5 +1,5 @@
 import '../../lib/config-firebase.js';
-import { userLogout } from '../../lib/config-auth.js';
+import { userLogout, auth } from '../../lib/config-auth.js';
 import { createPost } from '../../lib/config-firestore.js';
 
 
@@ -27,7 +27,8 @@ export default function feed() {
 
     btnPost.addEventListener("click", (e) => {
         e.preventDefault();
-        createPost(editPost.value);
+        console.log(auth.currentUser);
+        createPost(editPost.value, auth.currentUser.email);
         console.log("postado!");
     })
 
