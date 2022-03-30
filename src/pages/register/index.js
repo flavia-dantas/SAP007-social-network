@@ -23,7 +23,7 @@ export default function register() {
         </form>
         <p class="subtitle">OU</p>
         <button type="submit" id="btnGoogle" class="btn-google">Inscreva-se com Google</button>
-        <p>Tem uma conta? <a href="/#login">Conecte-se</a></p>
+        <p>Tem uma conta? <a class= "login" href="/#login">Conecte-se</a></p>
     </div>
     `;
     container.innerHTML = template;
