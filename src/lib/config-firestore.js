@@ -5,7 +5,7 @@ const db = getFirestore();
 export const createPost = async (textPost, userEmail) => {
     try {
         const docRef = await addDoc(collection(db, "post"), {
-            post: textPost,
+            textPost: textPost,
             userEmail: userEmail,
             data: new Date(),
         });

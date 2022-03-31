@@ -11,12 +11,20 @@ export default function feed() {
         <button id="btnLogout" class="btn-logout">Logout</button>
     </div>
 
-    <div class="container-post" id="">
+    <div class="container-post">
         <textarea id="editPost" class="edit-Post"></textarea>
         <button id="btnPost" class="btn-post">Postar</button>
         <button id="editButton" class="edit-button">Editar</button>
         <button id="deleteButton" class="delete-button">Excluir</button>
-        <textarea id="post" class="post"></textarea>
+    </div>
+    <div class="container-timeline">
+        <p></p>
+        <p></p>
+        <p></p>
+        <div class="container-likes">
+            <button id="like" class="like">Curtir</button>
+            <span id="numLikes" class="num-likes">0</span>
+        </div>
     </div>
     `;
     container.innerHTML = template;
