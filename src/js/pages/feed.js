@@ -1,6 +1,6 @@
 import '../../lib/config-firebase.js';
 import { userLogout, auth } from '../../lib/config-auth.js';
-import { createPost } from '../../lib/config-firestore.js';
+import { createPost, getPost } from '../../lib/config-firestore.js';
 
 
 export default function feed() {
@@ -17,15 +17,7 @@ export default function feed() {
         <button id="editButton" class="edit-button">Editar</button>
         <button id="deleteButton" class="delete-button">Excluir</button>
     </div>
-    <div class="container-timeline">
-        <p></p>
-        <p></p>
-        <p></p>
-        <div class="container-likes">
-            <button id="like" class="like">Curtir</button>
-            <span id="numLikes" class="num-likes">0</span>
-        </div>
-    </div>
+    
     `;
     container.innerHTML = template;
 
@@ -35,9 +27,12 @@ export default function feed() {
 
     btnPost.addEventListener("click", (e) => {
         e.preventDefault();
-        console.log(auth.currentUser);
+        // console.log(auth.currentUser);
         createPost(editPost.value, auth.currentUser.email);
-        console.log("postado!");
+        getPost();
+        gettingPost(getPost);
+        console.log('getPost', getPost);
+        console.log('gettingPost', gettingPost);
     })
 
 
@@ -53,4 +48,24 @@ export default function feed() {
 
     return container
 
+}
+
+function gettingPost(post) {
+    const postsContainer = document.createElement('div');
+    const templatePost = 
+        `        
+    <div class="container-timeline">
+        <p>${post.textPost}</p>
+        <p>${post.userEmail}</p>
+        <p>${post.date}</p>
+        
+        <div class="container-likes">
+            <button id="like" class="like">Curtir</button>
+            <span id="numLikes" class="num-likes">0</span>
+        </div>
+    </div>      
+    `
+    postsContainer.innerHTML = templatePost;
+    
+    return postsContainer;
 }

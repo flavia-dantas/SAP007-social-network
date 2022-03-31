@@ -22,14 +22,14 @@ const redirect = () => {
 
 const init = () => {
     window.addEventListener('hashchange', () => {
-        console.log(window.location.hash)
+        // console.log(window.location.hash)
         main.innerHTML = '';
         redirect();
     });
 };
 
 window.addEventListener('load', () => {
-    console.log("aqui!")
+    // console.log("aqui!")
     redirect();
     init();
 });
