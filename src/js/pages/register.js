@@ -48,7 +48,7 @@ export default function register() {
 
     btnRegisterGoogle.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log("Vamos Google")
+        // console.log("Vamos Google")
         googleLogin()
             .then(() => {
                 window.location.hash = 'feed';
