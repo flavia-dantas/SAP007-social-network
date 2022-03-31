@@ -1,6 +1,6 @@
-import register from "./pages/register/index.js";
-import login from "./pages/signIn/index.js";
-import feed from "./pages/feed/index.js";
+import register from "./pages/register.js";
+import login from "./pages/signIn.js";
+import feed from "./pages/feed.js";
 
 const main = document.getElementById('root');
 
