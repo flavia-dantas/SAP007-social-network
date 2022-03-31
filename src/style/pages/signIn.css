@@ -1,4 +1,4 @@
-@import './variables.css';
+@import '../variables.css';
 
 .container-login {
     background-color: var(--bg-color);
@@ -26,5 +26,4 @@
 
 .required-item, .register, .subtitle {
     color: var(--venetian-red);
-    text-decoration: none;
 }

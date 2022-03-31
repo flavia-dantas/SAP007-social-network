@@ -1,5 +1,4 @@
-@import "./style/global.css";
-@import "./style/variables.css";
+@import '../variables.css';
 
 .container-register {
     background-color: var(--bg-color);

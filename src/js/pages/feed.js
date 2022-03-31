@@ -4,7 +4,7 @@ import { createPost } from '../../lib/config-firestore.js';
 
 
 export default function feed() {
-    const container = document.createElement('div');
+    const container = document.createElement('section');
     const template = `
     <div class="container-feed">
         <h3>Feed</h3>

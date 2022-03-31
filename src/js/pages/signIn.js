@@ -2,11 +2,11 @@ import '../../lib/config-firebase.js';
 import { signIn, googleLogin } from '../../lib/config-auth.js';
 
 export default function login() {
-    const container = document.createElement('div');
+    const container = document.createElement('section');
     const template = `
 
     <div class="container-login">
-        <img class="logo" src="./img/goodfood.png" alt="logo">
+        <img class="logo" src="./img/logo.png" alt="logo">
         <h3 class="title">Login</h3>
         <form class="form-login">
             <label class="label-form">E-mail
@@ -19,7 +19,7 @@ export default function login() {
             <input type="password" id="inputPassword" class="input-password" placeholder="******">
             <button type="submit" id="btnLogin" class="btn-login">Entrar</button>
             <p id="errorMessage" class="error-message"></p>
-            <p class="subtitle">OU</p>
+            <p class="subtitle">Ou</p>
             <button type="submit" id="btnGoogle" class="btn-google">Fazer login com Google</button>
             <p>Não tem uma conta? <a class="register" href="/#register">Cadastre-se</a></p>
         </form>
