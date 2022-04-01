@@ -15,13 +15,15 @@ export const createPost = async (textPost, userEmail) => {
     }
 }
 
-export const getPost = async (post) => {
+export const getPost = async () => {
+    const arrPost = [];
     const querySnapshot = await getDocs(collection(db, "post"));
     querySnapshot.forEach((doc) => {
-        post = doc.data();
+        const timeline = doc.data();
         // console.log(`${doc.id} => ${doc.data()}`);
-
+        arrPost.push(timeline);
     });
+    return arrPost;
 }
 
 
