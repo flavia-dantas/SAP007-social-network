@@ -2,7 +2,6 @@ import '../../lib/config-firebase.js';
 import { userLogout, auth } from '../../lib/config-auth.js';
 import { createPost, getPost } from '../../lib/config-firestore.js';
 
-
 export default function feed() {
     const container = document.createElement('section');
     const template = `
@@ -17,6 +16,7 @@ export default function feed() {
         <button id="editButton" class="edit-button">Editar</button>
         <button id="deleteButton" class="delete-button">Excluir</button>
     </div>
+    <section></section>
     
     `;
     container.innerHTML = template;
@@ -24,17 +24,18 @@ export default function feed() {
     const btnLogout = container.querySelector('#btnLogout');
     const btnPost = container.querySelector('#btnPost');
     const editPost = container.querySelector('#editPost');
+    const sectionPost = container.querySelector('section');
 
-    btnPost.addEventListener("click", (e) => {
+
+    btnPost.addEventListener("click", async (e) => {
         e.preventDefault();
-        // console.log(auth.currentUser);
         createPost(editPost.value, auth.currentUser.email);
-        getPost();
-        gettingPost(getPost);
-        console.log('getPost', getPost);
-        console.log('gettingPost', gettingPost);
+        const allPosts = await getPost();
+        allPosts.map(item => {
+            const postElement = gettingPost(item);
+            sectionPost.appendChild(postElement);
+        })
     })
-
 
     btnLogout.addEventListener("click", (e) => {
         e.preventDefault();
@@ -52,7 +53,7 @@ export default function feed() {
 
 function gettingPost(post) {
     const postsContainer = document.createElement('div');
-    const templatePost = 
+    const templatePost =
         `        
     <div class="container-timeline">
         <p>${post.textPost}</p>
@@ -66,6 +67,6 @@ function gettingPost(post) {
     </div>      
     `
     postsContainer.innerHTML = templatePost;
-    
+
     return postsContainer;
 }
