@@ -1,6 +1,7 @@
 import register from "./pages/register.js";
 import login from "./pages/signIn.js";
 import feed from "./pages/feed.js";
+import writePost from "./pages/writePost.js";
 
 const main = document.getElementById('root');
 
@@ -15,6 +16,9 @@ const redirect = () => {
         case '#feed':
             main.appendChild(feed());
             break;
+        case '#writePost':
+            main.appendChild(writePost());
+             break;
         default:
             main.appendChild(login());
     }
@@ -22,7 +26,7 @@ const redirect = () => {
 
 const init = () => {
     window.addEventListener('hashchange', () => {
-        // console.log(window.location.hash)
+        console.log(window.location.hash)
         main.innerHTML = '';
         redirect();
     });
