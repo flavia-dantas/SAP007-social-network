@@ -21,7 +21,7 @@ export default function register() {
             <button type="submit" id="btnRegister" class="btn-register">Cadastrar</button>
             <p id="errorMessage" class="error-message"></p>
         </form>
-        <p class="subtitle">Ou</p>
+        <p class="subtitle">ou</p>
         <button type="submit" id="btnGoogle" class="btn-google">Inscreva-se com Google</button>
         <p>Tem uma conta? <a class= "login" href="/#login">Conecte-se</a></p>
     </div>
