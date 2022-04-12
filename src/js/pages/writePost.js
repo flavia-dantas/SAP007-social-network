@@ -7,18 +7,18 @@ export default function writePost() {
     const template = `
     <h3>Compartilhe</h3>
     <div class="container-write-post">
-    <textarea id="editPost" class="edit-Post"></textarea>
-    <button id="btnPost" class="btn-post">Postar</button>
+        <textarea id="postContent" class="post-content"></textarea>
+        <button id="btnPost" class="btn-post">Postar</button>
     </div>`;
     
     container.innerHTML = template;
 
-    const editPost = container.querySelector('#editPost');
+    const postContent = container.querySelector('#postContent');
     const btnPost = container.querySelector('#btnPost');
 
     btnPost.addEventListener("click", (e) => {
         e.preventDefault();
-        createPost(editPost.value, auth.currentUser.email);
+        createPost(postContent.value, auth.currentUser.email);
         window.location.hash = '#feed';
     })
 

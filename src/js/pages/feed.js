@@ -1,44 +1,29 @@
 import '../../lib/config-firebase.js';
 import { getPost } from '../../lib/config-firestore.js';
-import { gettingPost } from '../components/post.js';
+import { postComponent } from '../components/post.js';
 
 export default function feed() {
     const container = document.createElement('section');
     const template = `
     <h3>Feed</h3>
-    <section id="showPost" class="show-post"></section>
-    
+    <div id="showPost" class="show-post"></div>    
     `;
+
     container.innerHTML = template;
-    
+
     const sectionPost = container.querySelector('#showPost');
 
     const showAllPosts = async () => {
-    const allPosts = await getPost();
-        allPosts.map(item => {
-            const postElement = gettingPost(item);
-            sectionPost.appendChild(postElement);
+        const allPosts = await getPost();
+        allPosts.forEach(item => {
+            const postElement = postComponent(item);
+            sectionPost.prepend(postElement);
         })
-    }  
+    }
     showAllPosts();
     return container
 }
-    
-    // btnPost.addEventListener("click", async (e) => {
-    //     e.preventDefault();
-    //     createPost(editPost.value, auth.currentUser.email);
-        
-    // })
 
-    // btnLogout.addEventListener("click", (e) => {
-    //     e.preventDefault();
-    //     userLogout()
-    //         .then(() => {
-    //             window.location.hash = '#login';
-    //         }).catch((error) => {
-    //             return error;
-    //         });
-    // })
 
- 
+
 

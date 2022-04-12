@@ -2,6 +2,7 @@
 @import "./pages/register.css";
 @import "./pages/signIn.css";
 @import "./components/post.css";
+@import "./pages/writePost.css";
 
 * {
     margin: 0;
