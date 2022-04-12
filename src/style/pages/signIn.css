@@ -1,7 +1,7 @@
 @import '../variables.css';
 
 .container-login {
-    background-color: var(--bg-color);
+    background-color: white;
     border: 2px solid var(--selective-yellow);
     height: 99.5vh;
     display: flex;
@@ -9,8 +9,9 @@
     border-radius: 20px;
 }
 
-.logo {
-    width: 15%;
+.logo-gf {
+    width: 50%;
+    margin-top: 35px;
     justify-items: center;
     display: flex;
     margin-left: auto;
@@ -20,7 +21,7 @@
 .title {
     text-align: center;
     color: var(--venetian-red);
-    margin-top: 50%;
+    margin-top: 30%;
 }
 
 .form-login {
@@ -39,6 +40,7 @@
     margin-bottom: 2%;
     font-size: 19px;
     border-color: var(--selective-yellow);
+    margin-top: 8px;
 }
 
 .btn-login {
@@ -58,14 +60,17 @@
     border-color: var(--selective-yellow);
     border-radius: 8px;
     top: 100px;
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 
 .google-logo {
     width: 8%;
+    margin-right: 5%;
 }
 
-.register {
-    margin: auto;
-    float: inline-end;
-
+.option-register {
+    color: var(--venetian-red);
+    font-weight: bold;
+    
 }

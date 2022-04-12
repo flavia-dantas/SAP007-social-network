@@ -6,24 +6,25 @@ export default function register() {
     const template = `
 
     <div class="container-register">
-        <div class="logo"></div>
-        <h3>Cadastro</h3>
+        <div class="logo">
+        <img class="logo-gf" src="./img/logo.png" alt="logo">
+        </div>
+        <h3 class="register">Cadastro</h3>
         <form class="form-register">
-            <div>
             <label class="label-form">E-mail
                 <span class="required-item">*</span>
             </label>
-            <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exeplo.com">
+            <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exemplo.com">
             <label class="label-form">Senha
                 <span class="required-item">*</span>
             </label>
             <input type="password" id="inputPassword" class="input-password" placeholder="******">
             <button type="submit" id="btnRegister" class="btn-register">Cadastrar</button>
             <p id="errorMessage" class="error-message"></p>
+            <p class="subtitle">ou</p>
+            <button type="submit" id="btnGoogle" class="btn-google"><img class="google-logo" src="./img/icon-google.png">Inscreva-se com Google</button>
+            <p>Tem uma conta? <a class= "option-login" href="/#login">Conecte-se</a></p>
         </form>
-        <p class="subtitle">ou</p>
-        <button type="submit" id="btnGoogle" class="btn-google">Inscreva-se com Google</button>
-        <p>Tem uma conta? <a class= "login" href="/#login">Conecte-se</a></p>
     </div>
     `;
     container.innerHTML = template;
