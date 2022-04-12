@@ -6,7 +6,9 @@ export default function login() {
     const template = `
 
     <div class="container-login">
-        <img class="logo" src="./img/logo.png" alt="logo">
+        <div class="gf-logotipo">
+        <img class="logo-gf" src="./img/logo.png" alt="logo">
+        </div>
         <h3 class="title">Login</h3>
         <form class="form-login">
             <label class="label-form">E-mail
@@ -19,9 +21,9 @@ export default function login() {
             <input type="password" id="inputPassword" class="input-password" placeholder="******">
             <button type="submit" id="btnLogin" class="btn-login">Entrar</button>
             <p id="errorMessage" class="error-message"></p>
-            <p class="subtitle">Ou</p>
-            <button type="submit" id="btnGoogle" class="btn-google">Fazer login com Google</button>
-            <p>Não tem uma conta? <a class="register" href="/#register">Cadastre-se</a></p>
+            <p class="subtitle">ou</p>
+            <button type="submit" id="btnGoogle" class="btn-google"><img class="google-logo" src="./img/icon-google.png">Fazer login com Google</button>
+            <p>Não tem uma conta? <a class="option-register" href="/#register">Cadastre-se</a></p>
         </form>
     </div>
         `;

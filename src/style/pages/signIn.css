@@ -1,11 +1,17 @@
 @import '../variables.css';
 
 .container-login {
-    background-color: var(--bg-color);
+    background-color: white;
+    border: 2px solid var(--selective-yellow);
+    height: 99.5vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
 }
 
-.logo {
-    width: 15%;
+.logo-gf {
+    width: 50%;
+    margin-top: 35px;
     justify-items: center;
     display: flex;
     margin-left: auto;
@@ -15,6 +21,7 @@
 .title {
     text-align: center;
     color: var(--venetian-red);
+    margin-top: 30%;
 }
 
 .form-login {
@@ -26,4 +33,44 @@
 
 .required-item, .register, .subtitle {
     color: var(--venetian-red);
+}
+
+.input-email, .input-password {
+    border-radius: 8px;
+    margin-bottom: 2%;
+    font-size: 19px;
+    border-color: var(--selective-yellow);
+    margin-top: 8px;
+}
+
+.btn-login {
+    border-radius: 8px;
+    height: 35px;
+    background-color: var(--selective-yellow);
+    border-color: var(--selective-yellow);
+    margin-top: 10%;
+    margin-bottom: 3%;
+    font-size: 16px;
+}
+
+.btn-google {
+    height: 30px;
+    background-color: white;
+    font-size: 16px;
+    border-color: var(--selective-yellow);
+    border-radius: 8px;
+    top: 100px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.google-logo {
+    width: 8%;
+    margin-right: 5%;
+}
+
+.option-register {
+    color: var(--venetian-red);
+    font-weight: bold;
+    
 }

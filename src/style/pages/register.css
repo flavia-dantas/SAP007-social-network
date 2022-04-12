@@ -1,5 +1,51 @@
 @import '../variables.css';
 
-.container-register {
-    background-color: var(--bg-color);
+.container-register{
+    background-color: white;
+    border: 2px solid var(--selective-yellow);
+    height: 99.5vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+.logo-gfv{
+    width: 50%;
+    margin-top: 35px;
+    justify-items: center;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.register {
+    text-align: center;
+    color: var(--venetian-red);
+    margin-top: 30%;
+}
+
+.form-register{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.btn-register {
+    border-radius: 8px;
+    height: 35px;
+    background-color: var(--selective-yellow);
+    border-color: var(--selective-yellow);
+    margin-top: 10%;
+    margin-bottom: 3%;
+    font-size: 16px;
+}
+
+.option-login {
+    color: var(--venetian-red);
+    font-weight: bold;
+}
+
+.have-count{
+    margin-top: auto;
 }
