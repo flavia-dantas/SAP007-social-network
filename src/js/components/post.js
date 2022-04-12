@@ -1,6 +1,4 @@
-import '../../lib/config-firebase.js';
-
-export function gettingPost(post) {
+export function postComponent(post) {
     const postsContainer = document.createElement('div');
     const templatePost = `   
     <div class="container-post">

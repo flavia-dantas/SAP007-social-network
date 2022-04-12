@@ -1,4 +1,8 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+import { getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider, signInWithPopup,
+  signOut } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
 
 export const auth = getAuth();
 const provider = new GoogleAuthProvider();
