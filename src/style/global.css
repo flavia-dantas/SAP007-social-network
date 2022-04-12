@@ -1,6 +1,7 @@
 @import "./pages/feed.css";
 @import "./pages/register.css";
 @import "./pages/signIn.css";
+@import "./components/post.css";
 
 * {
     margin: 0;

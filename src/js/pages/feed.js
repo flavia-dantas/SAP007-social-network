@@ -6,7 +6,7 @@ export default function feed() {
     const container = document.createElement('section');
     const template = `
     <h3>Feed</h3>
-    <section id="showPost"></section>
+    <section id="showPost" class="show-post"></section>
     
     `;
     container.innerHTML = template;
