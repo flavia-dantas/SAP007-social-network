@@ -4,6 +4,7 @@
 @import "./pages/writePost.css";
 @import "./components/post.css";
 @import "./components/navbar.css";
+@import "./components/header.css";
 
 * {
     margin: 0;
