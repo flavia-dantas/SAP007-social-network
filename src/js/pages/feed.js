@@ -1,6 +1,7 @@
 import '../../lib/config-firebase.js';
 import { getPost } from '../../lib/config-firestore.js';
 import { postComponent } from '../components/post.js';
+import { navbar } from '../components/navbar.js';
 
 export default function feed() {
     const container = document.createElement('section');
@@ -10,6 +11,7 @@ export default function feed() {
     `;
 
     container.innerHTML = template;
+    container.appendChild(navbar());
 
     const sectionPost = container.querySelector('#showPost');
 
