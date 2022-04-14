@@ -18,7 +18,6 @@ export function createUser(email, password) {
 }
 
 export function userLogout() {
-
   return signOut(auth)
 }
 
