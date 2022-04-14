@@ -4,9 +4,9 @@ import { createPost } from '../../lib/config-firestore.js';
 
 export default function writePost() {
     const container = document.createElement('section');
-    const template = `
-    <h3>Compartilhe</h3>
+    const template = `    
     <div class="container-write-post">
+        <p>Compartilhe sua indicação</p>
         <textarea id="postContent" class="post-content"></textarea>
         <button id="btnPost" class="btn-post">Postar</button>
     </div>`;
