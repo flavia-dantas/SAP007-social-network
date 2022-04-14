@@ -14,5 +14,6 @@
     width: auto;
     height: 7vh;
     margin: auto;
+    display: flex;
 }
 

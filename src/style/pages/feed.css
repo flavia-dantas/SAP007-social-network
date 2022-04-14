@@ -1,1 +1,6 @@
 @import '../variables.css';
+
+.show-post{
+    margin-top: 10vh;
+    height: 82vh;
+}

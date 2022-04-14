@@ -7,7 +7,6 @@ import { header } from '../components/header.js';
 export default function feed() {
     const container = document.createElement('section');
     const template = `
-    <h3>Feed</h3>
     <div id="showPost" class="show-post"></div>    
     `;
 
