@@ -1,7 +1,11 @@
-import { getFirestore,
-  collection,
-  addDoc,
-  getDocs } from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    orderBy,
+    query,
+} from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
 
 const db = getFirestore();
 
@@ -11,6 +15,7 @@ export const createPost = async (textPost, userEmail) => {
             textPost: textPost,
             userEmail: userEmail,
             date: new Date(),
+
         });
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -20,10 +25,11 @@ export const createPost = async (textPost, userEmail) => {
 
 export const getPost = async () => {
     const arrPost = [];
-    const querySnapshot = await getDocs(collection(db, "post"));
+    const orderFirestore = query(collection(db, "post"), orderBy("date"));
+    const querySnapshot = await getDocs(orderFirestore);
     querySnapshot.forEach((doc) => {
         const timeline = doc.data();
-        // console.log(`${doc.id} => ${doc.data()}`);
+        //console.log(`${doc.id} => ${doc.data()}`);
         arrPost.push(timeline);
     });
     return arrPost;
