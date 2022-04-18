@@ -1,0 +1,18 @@
+@import '../variables.css';
+
+.container-nav{
+ width: 100vw;
+ height: 8vh ;
+ display: flex;
+ justify-content: space-around;
+ bottom: 0;
+ position: fixed;
+ border-top: 1px solid var(--venetian-red);
+ background-color: var( --bg-color);
+}
+
+.btn-home, .btn-new-post, .btn-logout{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

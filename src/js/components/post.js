@@ -1,8 +1,8 @@
 export function postComponent(post) {
     const postsContainer = document.createElement('div');
+    postsContainer.classList.add("container-post")
     const templatePost = `   
-    <div class="container-post">
-        <div class="user-perfil">
+            <div class="user-perfil">
             <h4 class="user-email">${post.userEmail}</h4>
             <p class="date-post">${(convertTimestamp(post.date))}</p>
         </div>
@@ -29,9 +29,8 @@ export function postComponent(post) {
                     <img src="../../img/icon-delete.png" alt="button-delete">
                 </button>
             </div>
-        </div>
-    </div>`
-
+        </div>`
+    
     postsContainer.innerHTML = templatePost;
 
     return postsContainer;

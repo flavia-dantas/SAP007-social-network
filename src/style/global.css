@@ -1,8 +1,10 @@
 @import "./pages/feed.css";
 @import "./pages/register.css";
 @import "./pages/signIn.css";
-@import "./components/post.css";
 @import "./pages/writePost.css";
+@import "./components/post.css";
+@import "./components/navbar.css";
+@import "./components/header.css";
 
 * {
     margin: 0;
