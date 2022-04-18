@@ -1,3 +1,6 @@
+import { likeUpdate } from '../../lib/config-firestore.js';
+import { auth } from '../../lib/config-auth.js';
+
 export function postComponent(post) {
     const postsContainer = document.createElement('div');
     postsContainer.classList.add("container-post")
@@ -14,7 +17,7 @@ export function postComponent(post) {
                 <button id="btnLike" class="btn-like">
                     <img src="../../img/icon-like-empty.png" alt="button-like">
                 </button>
-                <span id="numLikes" class="num-likes">0</span>
+                <span id="numLikes" class="num-likes">${post.like.length}</span>
             </div>
             <div class="edit-post">
                 <button id="btnConfirmEdit" class="btn-confirm-edit">
@@ -32,6 +35,13 @@ export function postComponent(post) {
         </div>`
     
     postsContainer.innerHTML = templatePost;
+    
+    const btnLike = postsContainer.querySelector('#btnLike');
+
+    btnLike.addEventListener('click', () => {
+
+        likeUpdate(post.id, auth.currentUser.email);
+      });
 
     return postsContainer;
 }

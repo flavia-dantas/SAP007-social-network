@@ -1,7 +1,11 @@
-import { getFirestore,
+import { 
+  getFirestore,
   collection,
   addDoc,
-  getDocs } from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
+  getDocs,
+  doc,
+  getDoc,
+  updateDoc} from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
 
 const db = getFirestore();
 
@@ -11,6 +15,7 @@ export const createPost = async (textPost, userEmail) => {
             textPost: textPost,
             userEmail: userEmail,
             date: new Date(),
+            like: [],
         });
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -24,9 +29,25 @@ export const getPost = async () => {
     querySnapshot.forEach((doc) => {
         const timeline = doc.data();
         // console.log(`${doc.id} => ${doc.data()}`);
-        arrPost.push(timeline);
+        arrPost.push({...timeline,id:doc.id});
     });
     return arrPost;
 }
 
+export const likeUpdate = async (idPost, userEmail) => {
+    const docId = doc(db, "post", idPost);
+    console.log(idPost);
+    const post = await getDoc(docId);
+    console.log(post.data());
+    const likes = post.data().like;
+    await updateDoc(docId, {
+        like: [...likes,userEmail],
+      });
+};
 
+//   const washingtonRef = doc(db, "cities", "DC");
+
+// // Set the "capital" field of the city 'DC'
+// await updateDoc(washingtonRef, {
+//   capital: true
+// });
