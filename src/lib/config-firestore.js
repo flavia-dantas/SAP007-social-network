@@ -1,9 +1,12 @@
-import { getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  doc,
-  deleteDoc 
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    orderBy,
+    query,
+    doc,
+    deleteDoc 
 } from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
 
 const db = getFirestore();
@@ -14,6 +17,7 @@ export const createPost = async (textPost, userEmail) => {
             textPost: textPost,
             userEmail: userEmail,
             date: new Date(),
+
         });
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -23,11 +27,12 @@ export const createPost = async (textPost, userEmail) => {
 
 export const getPost = async () => {
     const arrPost = [];
-    const querySnapshot = await getDocs(collection(db, "post"));
-    querySnapshot.forEach((itemPost) => {
-        const timeline = itemPost.data();     
-        arrPost.push({...timeline, id: itemPost.id});
-        console.log(arrPost);
+    const orderFirestore = query(collection(db, "post"), orderBy("date"));
+    const querySnapshot = await getDocs(orderFirestore);
+    querySnapshot.forEach((doc) => {
+        const timeline = doc.data();
+        //console.log(`${doc.id} => ${doc.data()}`);
+        arrPost.push({...timeline, id: doc.id});
     });
     return arrPost;
     
