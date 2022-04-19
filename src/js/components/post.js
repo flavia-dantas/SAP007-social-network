@@ -1,4 +1,5 @@
-import { like} from '../../lib/config-firestore.js';
+
+import { deletePost, like} from '../../lib/config-firestore.js';
 import { auth } from '../../lib/config-auth.js';
 
 export function postComponent(post) {
@@ -46,10 +47,21 @@ export function postComponent(post) {
         numLikes.innerHTML = post.like.length;
       });
    
+    const btnDelete = postsContainer.querySelector('#btnDelete');
+    btnDelete.addEventListener("click", (e) => {
+        e.preventDefault();
+        deletePost(post.id);
+        postsContainer.remove();
+    });
+
+
     return postsContainer;
 };
+
+
 
 const convertTimestamp = (timestamp) => {
     let date = timestamp.toDate();
     return date.toLocaleString("pt-br");
 };
+
