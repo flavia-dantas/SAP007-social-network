@@ -1,11 +1,14 @@
-import { 
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  doc,
-  getDoc,
-  updateDoc} from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    getDoc,
+    updateDoc,
+    orderBy,
+    query
+} from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
 
 const db = getFirestore();
 
@@ -16,6 +19,7 @@ export const createPost = async (textPost, userEmail) => {
             userEmail: userEmail,
             date: new Date(),
             like: [],
+
         });
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -25,11 +29,12 @@ export const createPost = async (textPost, userEmail) => {
 
 export const getPost = async () => {
     const arrPost = [];
-    const querySnapshot = await getDocs(collection(db, "post"));
+    const orderFirestore = query(collection(db, "post"), orderBy("date"));
+    const querySnapshot = await getDocs(orderFirestore);
     querySnapshot.forEach((doc) => {
         const timeline = doc.data();
         // console.log(`${doc.id} => ${doc.data()}`);
-        arrPost.push({...timeline,id:doc.id});
+        arrPost.push({ ...timeline, id: doc.id });
     });
     return arrPost;
 }
@@ -41,13 +46,6 @@ export const likeUpdate = async (idPost, userEmail) => {
     console.log(post.data());
     const likes = post.data().like;
     await updateDoc(docId, {
-        like: [...likes,userEmail],
-      });
+        like: [...likes, userEmail],
+    });
 };
-
-//   const washingtonRef = doc(db, "cities", "DC");
-
-// // Set the "capital" field of the city 'DC'
-// await updateDoc(washingtonRef, {
-//   capital: true
-// });

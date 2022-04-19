@@ -7,7 +7,7 @@ export function postComponent(post) {
     const templatePost = `   
             <div class="user-perfil">
             <h4 class="user-email">${post.userEmail}</h4>
-            <p class="date-post">${post.date}</p>
+            <p class="date-post">${(convertTimestamp(post.date))}</p>
         </div>
         <div class="post-field">
             <p class="user-post">${post.textPost}</p>
@@ -37,11 +37,15 @@ export function postComponent(post) {
     postsContainer.innerHTML = templatePost;
     
     const btnLike = postsContainer.querySelector('#btnLike');
-
+    
     btnLike.addEventListener('click', () => {
-
         likeUpdate(post.id, auth.currentUser.email);
       });
-
-    return postsContainer;
+      
+    return postsContainer; 
 }
+
+const convertTimestamp = (timestamp) => {
+    let date = timestamp.toDate();
+    return date.toLocaleString("pt-br");
+};
