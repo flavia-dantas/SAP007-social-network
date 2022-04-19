@@ -1,4 +1,4 @@
-import { likeUpdate } from '../../lib/config-firestore.js';
+import { like} from '../../lib/config-firestore.js';
 import { auth } from '../../lib/config-auth.js';
 
 export function postComponent(post) {
@@ -17,7 +17,7 @@ export function postComponent(post) {
                 <button id="btnLike" class="btn-like">
                     <img src="../../img/icon-like-empty.png" alt="button-like">
                 </button>
-                <span id="numLikes" class="num-likes">${post.like.length}</span>
+                <p id="numLikes" class="num-likes">${post.like.length}</p>
             </div>
             <div class="edit-post">
                 <button id="btnConfirmEdit" class="btn-confirm-edit">
@@ -37,13 +37,17 @@ export function postComponent(post) {
     postsContainer.innerHTML = templatePost;
     
     const btnLike = postsContainer.querySelector('#btnLike');
-    
-    btnLike.addEventListener('click', () => {
-        likeUpdate(post.id, auth.currentUser.email);
+    const numLikes = postsContainer.querySelector('#numLikes');
+         
+    btnLike.addEventListener('click', async() => {
+        // console.log(Number(numLikes.innerHTML));
+        await like(post.id, auth.currentUser.email);
+        post.like.push(auth.currentUser.email);
+        numLikes.innerHTML = post.like.length;
       });
-      
-    return postsContainer; 
-}
+   
+    return postsContainer;
+};
 
 const convertTimestamp = (timestamp) => {
     let date = timestamp.toDate();

@@ -4,10 +4,11 @@ import {
     addDoc,
     getDocs,
     doc,
-    getDoc,
     updateDoc,
     orderBy,
-    query
+    query,
+    arrayUnion,
+    arrayRemove
 } from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
 
 const db = getFirestore();
@@ -39,13 +40,21 @@ export const getPost = async () => {
     return arrPost;
 }
 
-export const likeUpdate = async (idPost, userEmail) => {
+export const like = async (idPost, userEmail, arrayLike) => {
     const docId = doc(db, "post", idPost);
     console.log(idPost);
-    const post = await getDoc(docId);
-    console.log(post.data());
-    const likes = post.data().like;
-    await updateDoc(docId, {
-        like: [...likes, userEmail],
+    // const post = await getDoc(docId);
+    // console.log(post.data());
+    // const likes = post.data().like;
+    return await updateDoc(docId, {
+        like: arrayUnion(userEmail),
     });
 };
+
+export const deslike = async(idPost, userEmail, arrayLike) =>{
+    const docId = doc(db, "post", idPost);
+    console.log(idPost);
+    return await updateDoc(docId, {
+        like: arrayRemove(userEmail),
+    });
+}
