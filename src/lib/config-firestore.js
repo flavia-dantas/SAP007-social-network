@@ -1,7 +1,10 @@
 import { getFirestore,
   collection,
   addDoc,
-  getDocs } from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
+  getDocs,
+  doc,
+  deleteDoc 
+} from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
 
 const db = getFirestore();
 
@@ -21,12 +24,15 @@ export const createPost = async (textPost, userEmail) => {
 export const getPost = async () => {
     const arrPost = [];
     const querySnapshot = await getDocs(collection(db, "post"));
-    querySnapshot.forEach((doc) => {
-        const timeline = doc.data();
-        // console.log(`${doc.id} => ${doc.data()}`);
-        arrPost.push(timeline);
+    querySnapshot.forEach((itemPost) => {
+        const timeline = itemPost.data();     
+        arrPost.push({...timeline, id: itemPost.id});
+        console.log(arrPost);
     });
     return arrPost;
+    
 }
 
-
+export function deletePost(item) {
+    return deleteDoc(doc(db, "post", item)); 
+}

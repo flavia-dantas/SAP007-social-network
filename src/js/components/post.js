@@ -1,3 +1,5 @@
+import { deletePost } from "../../lib/config-firestore.js"; 
+
 export function postComponent(post) {
     const postsContainer = document.createElement('div');
     postsContainer.classList.add("container-post")
@@ -33,5 +35,13 @@ export function postComponent(post) {
     
     postsContainer.innerHTML = templatePost;
 
+    const btnDelete = postsContainer.querySelector('#btnDelete');
+    btnDelete.addEventListener("click", (e) => {
+        e.preventDefault();
+        deletePost(post.id);
+        postsContainer.remove();
+    });
+
     return postsContainer;
 }
+
