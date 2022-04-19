@@ -5,6 +5,8 @@ import {
     getDocs,
     orderBy,
     query,
+    doc,
+    deleteDoc 
 } from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
 
 const db = getFirestore();
@@ -30,9 +32,12 @@ export const getPost = async () => {
     querySnapshot.forEach((doc) => {
         const timeline = doc.data();
         //console.log(`${doc.id} => ${doc.data()}`);
-        arrPost.push(timeline);
+        arrPost.push({...timeline, id: doc.id});
     });
     return arrPost;
+    
 }
 
-
+export function deletePost(item) {
+    return deleteDoc(doc(db, "post", item)); 
+}
