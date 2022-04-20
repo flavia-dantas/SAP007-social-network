@@ -40,10 +40,10 @@ export function postComponent(post) {
     const numLikes = postsContainer.querySelector('#numLikes');
 
     btnLike.addEventListener('click', () => {
-         // console.log(Number(numLikes.innerHTML));
          const likePost = post.like
          if(likePost.includes(auth.currentUser.email)){
             deslike(post.id, auth.currentUser.email).then(()=> {
+                likePost.splice(auth.currentUser.email);
                 const showLike = Number(numLikes.innerHTML) -1;
                 numLikes.innerHTML = showLike;
                 console.log(numLikes,"deslike");
@@ -53,10 +53,8 @@ export function postComponent(post) {
                 likePost.push(auth.currentUser.email);
                 const showLike = Number(numLikes.innerHTML) +1;
                 numLikes.innerHTML = showLike;
-                // = likePost.length +1;
                 console.log(numLikes,"like");
             })
-            
          }
     });
    
@@ -66,8 +64,6 @@ export function postComponent(post) {
         deletePost(post.id);
         postsContainer.remove();
     });
-
-
     return postsContainer;
 };
 
