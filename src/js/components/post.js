@@ -1,4 +1,6 @@
-import { deletePost } from "../../lib/config-firestore.js"; 
+
+import { deletePost, like} from '../../lib/config-firestore.js';
+import { auth } from '../../lib/config-auth.js';
 
 export function postComponent(post) {
     const postsContainer = document.createElement('div');
@@ -16,7 +18,7 @@ export function postComponent(post) {
                 <button id="btnLike" class="btn-like">
                     <img src="../../img/icon-like-empty.png" alt="button-like">
                 </button>
-                <span id="numLikes" class="num-likes">0</span>
+                <p id="numLikes" class="num-likes">${post.like.length}</p>
             </div>
             <div class="edit-post">
                 <button id="btnConfirmEdit" class="btn-confirm-edit">
@@ -34,7 +36,17 @@ export function postComponent(post) {
         </div>`
     
     postsContainer.innerHTML = templatePost;
-
+    
+    const btnLike = postsContainer.querySelector('#btnLike');
+    const numLikes = postsContainer.querySelector('#numLikes');
+         
+    btnLike.addEventListener('click', async() => {
+        // console.log(Number(numLikes.innerHTML));
+        await like(post.id, auth.currentUser.email);
+        post.like.push(auth.currentUser.email);
+        numLikes.innerHTML = post.like.length;
+      });
+   
     const btnDelete = postsContainer.querySelector('#btnDelete');
     btnDelete.addEventListener("click", (e) => {
         e.preventDefault();
@@ -42,14 +54,14 @@ export function postComponent(post) {
         postsContainer.remove();
     });
 
+
     return postsContainer;
-}
+};
 
 
 
 const convertTimestamp = (timestamp) => {
     let date = timestamp.toDate();
-
     return date.toLocaleString("pt-br");
-}
+};
 
