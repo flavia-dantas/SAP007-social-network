@@ -1,4 +1,4 @@
-import { deletePost, like, deslike } from '../../lib/config-firestore.js';
+import { deletePost, like, deslike, editPost } from '../../lib/config-firestore.js';
 import { auth } from '../../lib/config-auth.js';
 
 export function postComponent(post) {
@@ -10,7 +10,7 @@ export function postComponent(post) {
             <p class="date-post">${(convertTimestamp(post.date))}</p>
         </div>
         <div class="post-field">
-            <p class="user-post">${post.textPost}</p>
+            <p id="userPost" class="user-post">${post.textPost}</p>
         </div>
         <div class="user-interactions">
             <div class="like-post">
@@ -40,30 +40,47 @@ export function postComponent(post) {
     const numLikes = postsContainer.querySelector('#numLikes');
 
     btnLike.addEventListener('click', () => {
-         const likePost = post.like
-         if(likePost.includes(auth.currentUser.email)){
-            deslike(post.id, auth.currentUser.email).then(()=> {
+        const likePost = post.like
+        if (likePost.includes(auth.currentUser.email)) {
+            deslike(post.id, auth.currentUser.email).then(() => {
                 likePost.splice(auth.currentUser.email);
-                const showLike = Number(numLikes.innerHTML) -1;
+                const showLike = Number(numLikes.innerHTML) - 1;
                 numLikes.innerHTML = showLike;
-                console.log(numLikes,"deslike");
+                console.log(numLikes, "deslike");
             })
-         }else{
-            like(post.id, auth.currentUser.email).then(()=>{
+        } else {
+            like(post.id, auth.currentUser.email).then(() => {
                 likePost.push(auth.currentUser.email);
-                const showLike = Number(numLikes.innerHTML) +1;
+                const showLike = Number(numLikes.innerHTML) + 1;
                 numLikes.innerHTML = showLike;
-                console.log(numLikes,"like");
+                console.log(numLikes, "like");
             })
-         }
+        }
     });
-   
+
     const btnDelete = postsContainer.querySelector('#btnDelete');
     btnDelete.addEventListener("click", (e) => {
         e.preventDefault();
         deletePost(post.id);
         postsContainer.remove();
     });
+
+
+    const btnEdit = postsContainer.querySelector('#btnEdit');
+    const textEditable = postsContainer.querySelector('#userPost');
+    const btnConfirmEdit = postsContainer.querySelector('#btnConfirmEdit');
+
+    btnEdit.addEventListener("click", (e) => {
+        e.preventDefault();
+        textEditable.setAttribute('contenteditable', 'true');
+
+    })
+
+    btnConfirmEdit.addEventListener("click", (e) => {
+        e.preventDefault();
+        editPost(post.id, textEditable.textContent);
+    })
+
     return postsContainer;
 };
 
