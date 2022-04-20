@@ -40,7 +40,7 @@ export const getPost = async () => {
 
     });
     return arrPost;
-    
+
 }
 
 export const like = async (idPost, userEmail) => {
@@ -70,7 +70,14 @@ export const deslike = async (idPost, userEmail) => {
     }
 };
 
+export const editPost = async (idPost, textPost) => {
+    const postIdEdit = doc(db, 'post', idPost);
+    console.log(textPost);
+    return await updateDoc(postIdEdit, { textPost: textPost })
+}
+
+
 export function deletePost(item) {
-    return deleteDoc(doc(db, "post", item)); 
+    return deleteDoc(doc(db, "post", item));
 
 }
