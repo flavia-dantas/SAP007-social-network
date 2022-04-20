@@ -1,5 +1,4 @@
-
-import { deletePost, like} from '../../lib/config-firestore.js';
+import { deletePost, like, deslike } from '../../lib/config-firestore.js';
 import { auth } from '../../lib/config-auth.js';
 
 export function postComponent(post) {
@@ -34,18 +33,30 @@ export function postComponent(post) {
                 </button>
             </div>
         </div>`
-    
+
     postsContainer.innerHTML = templatePost;
-    
+
     const btnLike = postsContainer.querySelector('#btnLike');
     const numLikes = postsContainer.querySelector('#numLikes');
-         
-    btnLike.addEventListener('click', async() => {
-        // console.log(Number(numLikes.innerHTML));
-        await like(post.id, auth.currentUser.email);
-        post.like.push(auth.currentUser.email);
-        numLikes.innerHTML = post.like.length;
-      });
+
+    btnLike.addEventListener('click', () => {
+         const likePost = post.like
+         if(likePost.includes(auth.currentUser.email)){
+            deslike(post.id, auth.currentUser.email).then(()=> {
+                likePost.splice(auth.currentUser.email);
+                const showLike = Number(numLikes.innerHTML) -1;
+                numLikes.innerHTML = showLike;
+                console.log(numLikes,"deslike");
+            })
+         }else{
+            like(post.id, auth.currentUser.email).then(()=>{
+                likePost.push(auth.currentUser.email);
+                const showLike = Number(numLikes.innerHTML) +1;
+                numLikes.innerHTML = showLike;
+                console.log(numLikes,"like");
+            })
+         }
+    });
    
     const btnDelete = postsContainer.querySelector('#btnDelete');
     btnDelete.addEventListener("click", (e) => {
@@ -53,12 +64,8 @@ export function postComponent(post) {
         deletePost(post.id);
         postsContainer.remove();
     });
-
-
     return postsContainer;
 };
-
-
 
 const convertTimestamp = (timestamp) => {
     let date = timestamp.toDate();

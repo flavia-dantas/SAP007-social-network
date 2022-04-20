@@ -43,23 +43,32 @@ export const getPost = async () => {
     
 }
 
-export const like = async (idPost, userEmail, arrayLike) => {
-    const docId = doc(db, "post", idPost);
-    console.log(idPost);
-    // const post = await getDoc(docId);
-    // console.log(post.data());
-    // const likes = post.data().like;
-    return await updateDoc(docId, {
-        like: arrayUnion(userEmail),
-    });
+export const like = async (idPost, userEmail) => {
+    try {
+        const docId = doc(db, "post", idPost);
+        console.log(idPost);
+        // const post = await getDoc(docId);
+        // console.log(post.data());
+        // const likes = post.data().like;
+        return await updateDoc(docId, {
+            like: arrayUnion(userEmail),
+        });
+    } catch (e) {
+        console.error("Não deu certo o like", e);
+    }
 };
 
-export const deslike = async(idPost, userEmail, arrayLike) =>{
-    const docId = doc(db, "post", idPost);
-    console.log(idPost);
-    return await updateDoc(docId, {
-        like: arrayRemove(userEmail),
-    });
+export const deslike = async (idPost, userEmail) => {
+    try {
+        const docId = doc(db, "post", idPost);
+        console.log(idPost);
+        return await updateDoc(docId, {
+            like: arrayRemove(userEmail),
+        });
+    } catch (e) {
+        console.error("Não deu certo o deslike ", e);
+    }
+};
 
 export function deletePost(item) {
     return deleteDoc(doc(db, "post", item)); 
