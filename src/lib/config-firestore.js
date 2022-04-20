@@ -69,3 +69,8 @@ export const deslike = async (idPost, userEmail) => {
         console.error("Não deu certo o deslike ", e);
     }
 };
+
+export function deletePost(item) {
+    return deleteDoc(doc(db, "post", item)); 
+
+}
