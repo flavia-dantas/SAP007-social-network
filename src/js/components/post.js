@@ -1,4 +1,4 @@
-import { like} from '../../lib/config-firestore.js';
+import { like, deslike } from '../../lib/config-firestore.js';
 import { auth } from '../../lib/config-auth.js';
 
 export function postComponent(post) {
@@ -33,19 +33,33 @@ export function postComponent(post) {
                 </button>
             </div>
         </div>`
-    
+
     postsContainer.innerHTML = templatePost;
-    
+
     const btnLike = postsContainer.querySelector('#btnLike');
     const numLikes = postsContainer.querySelector('#numLikes');
-         
-    btnLike.addEventListener('click', async() => {
-        // console.log(Number(numLikes.innerHTML));
-        await like(post.id, auth.currentUser.email);
-        post.like.push(auth.currentUser.email);
-        numLikes.innerHTML = post.like.length;
-      });
-   
+
+    btnLike.addEventListener('click', () => {
+         // console.log(Number(numLikes.innerHTML));
+         const likePost = post.like
+         if(likePost.includes(auth.currentUser.email)){
+            deslike(post.id, auth.currentUser.email).then(()=> {
+                const showLike = Number(numLikes.innerHTML) -1;
+                numLikes.innerHTML = showLike;
+                console.log(numLikes,"deslike");
+            })
+         }else{
+            like(post.id, auth.currentUser.email).then(()=>{
+                likePost.push(auth.currentUser.email);
+                const showLike = Number(numLikes.innerHTML) +1;
+                numLikes.innerHTML = showLike;
+                // = likePost.length +1;
+                console.log(numLikes,"like");
+            })
+            
+         }
+    });
+
     return postsContainer;
 };
 
@@ -53,3 +67,45 @@ const convertTimestamp = (timestamp) => {
     let date = timestamp.toDate();
     return date.toLocaleString("pt-br");
 };
+
+    // for(let i=0;i < btnLike.length; i++)
+
+
+ // if(post.like.includes((auth.currentUser.email))){
+        //     deslike(post.id, auth.currentUser.email);
+        //     post.like.remove(auth.currentUser.email);
+        //     numLikes.innerHTML = post.like.length -1;
+        // }else{
+        //     like(post.id, auth.currentUser.email);
+        //     post.like.push(auth.currentUser.email);
+        //     numLikes.innerHTML = post.like.length;
+        // }
+
+
+
+
+
+
+
+
+
+// btnLike.addEventListener('click', async () => {
+//     const postLike = post.like
+
+    
+
+//     const userFound = postLike.find(
+//         (user) => user === auth.currentUser.emai);
+//     if (!userFound){
+//         await like(post.id, auth.currentUser.email);
+//         const numLikes = Number(showLikes.textContent);
+//         showLikes.innerHTML = numLikes + 1;
+//         postLike.push(auth.currentUser.email);
+//     } else {
+//         await deslike(post.id, auth.currentUser.email);
+//         const numLikes = Number(showLikes.textContent);
+//         showLikes.innerHTML = numLikes - 1;
+//         postLike = postLike.map(
+//             (user) => user !== auth.currentUser.email);
+//     }
+// });
