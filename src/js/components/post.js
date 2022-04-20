@@ -1,4 +1,4 @@
-import { like, deslike } from '../../lib/config-firestore.js';
+import { deletePost, like, deslike } from '../../lib/config-firestore.js';
 import { auth } from '../../lib/config-auth.js';
 
 export function postComponent(post) {
@@ -59,6 +59,14 @@ export function postComponent(post) {
             
          }
     });
+   
+    const btnDelete = postsContainer.querySelector('#btnDelete');
+    btnDelete.addEventListener("click", (e) => {
+        e.preventDefault();
+        deletePost(post.id);
+        postsContainer.remove();
+    });
+
 
     return postsContainer;
 };
@@ -68,44 +76,3 @@ const convertTimestamp = (timestamp) => {
     return date.toLocaleString("pt-br");
 };
 
-    // for(let i=0;i < btnLike.length; i++)
-
-
- // if(post.like.includes((auth.currentUser.email))){
-        //     deslike(post.id, auth.currentUser.email);
-        //     post.like.remove(auth.currentUser.email);
-        //     numLikes.innerHTML = post.like.length -1;
-        // }else{
-        //     like(post.id, auth.currentUser.email);
-        //     post.like.push(auth.currentUser.email);
-        //     numLikes.innerHTML = post.like.length;
-        // }
-
-
-
-
-
-
-
-
-
-// btnLike.addEventListener('click', async () => {
-//     const postLike = post.like
-
-    
-
-//     const userFound = postLike.find(
-//         (user) => user === auth.currentUser.emai);
-//     if (!userFound){
-//         await like(post.id, auth.currentUser.email);
-//         const numLikes = Number(showLikes.textContent);
-//         showLikes.innerHTML = numLikes + 1;
-//         postLike.push(auth.currentUser.email);
-//     } else {
-//         await deslike(post.id, auth.currentUser.email);
-//         const numLikes = Number(showLikes.textContent);
-//         showLikes.innerHTML = numLikes - 1;
-//         postLike = postLike.map(
-//             (user) => user !== auth.currentUser.email);
-//     }
-// });

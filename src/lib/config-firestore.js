@@ -3,12 +3,13 @@ import {
     collection,
     addDoc,
     getDocs,
-    doc,
     updateDoc,
     orderBy,
     query,
     arrayUnion,
-    arrayRemove
+    arrayRemove,
+    doc,
+    deleteDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js'
 
 const db = getFirestore();
@@ -36,8 +37,10 @@ export const getPost = async () => {
         const timeline = doc.data();
         // console.log(`${doc.id} => ${doc.data()}`);
         arrPost.push({ ...timeline, id: doc.id });
+
     });
     return arrPost;
+    
 }
 
 export const like = async (idPost, userEmail) => {
@@ -54,7 +57,6 @@ export const like = async (idPost, userEmail) => {
         console.error("Não deu certo o like", e);
     }
 };
-
 
 export const deslike = async (idPost, userEmail) => {
     try {
