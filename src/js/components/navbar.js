@@ -7,13 +7,13 @@ export function navbar() {
 
     const template = `
     <button id="btnHome" class="btn-home">
-        <img src="src/img/icon-home.png" alt="button-home">
+        <img src="./img/icon-home.png" alt="button-home">
     </button>
     <button id="btnNewPost" class="btn-new-post">
-      <img src="src/img/icon-new-post.png" alt="button-new-post">
+      <img src="./img/icon-new-post.png" alt="button-new-post">
     </button>
     <button id="btnLogout" class="btn-logout">
-        <img src="src/img/icon-logout.png" alt="button-logout">
+        <img src="./img/icon-logout.png" alt="button-logout">
     </button>
     `;
 
