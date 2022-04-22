@@ -7,13 +7,13 @@ export function navbar() {
 
     const template = `
     <button id="btnHome" class="btn-home">
-        <img src="../img/icon-home.png" alt="button-home">
+        <img src="src/img/icon-home.png" alt="button-home">
     </button>
     <button id="btnNewPost" class="btn-new-post">
-      <img src="../img/icon-new-post.png" alt="button-new-post">
+      <img src="src/img/icon-new-post.png" alt="button-new-post">
     </button>
     <button id="btnLogout" class="btn-logout">
-        <img src="../img/icon-logout.png" alt="button-logout">
+        <img src="src/img/icon-logout.png" alt="button-logout">
     </button>
     `;
 
@@ -23,16 +23,16 @@ export function navbar() {
     const btnNewPost = container.querySelector('#btnNewPost');
     const btnLogout = container.querySelector('#btnLogout');
 
-    btnHome.addEventListener("click", () =>{
+    btnHome.addEventListener("click", () => {
         window.location.hash = '#feed';
-        window.scrollTo({top: 0, behavior: 'smooth'});
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    btnNewPost.addEventListener("click", () =>{
+    btnNewPost.addEventListener("click", () => {
         window.location.hash = '#writePost';
     });
 
-    btnLogout.addEventListener("click", () =>{
+    btnLogout.addEventListener("click", () => {
         userLogout()
             .then(() => {
                 window.location.hash = '#login';
