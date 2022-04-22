@@ -1,0 +1,52 @@
+@import '../variables.css';
+
+.container-post{
+    width: 80%;
+    border: 3px solid var(--selective-yellow);
+    border-radius: 10px;
+    margin: 6% 0;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 1px 1px 10px var(--shadow);
+  
+}
+
+.user-perfil{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px 10px 0 0;
+    padding: 1% 2%;
+}
+
+.post-field{
+    display: flex;
+    padding: 2%;
+}
+
+.user-interactions{
+    display: flex;
+    border-top: 1px solid var(--selective-yellow);
+    padding: 1% 2%;
+    display: flex;  
+}
+
+.like-post{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.num-likes{
+    margin: 1%;
+}
+
+.edit-post, .delete-post{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-like, .btn-confirm-edit, .btn-edit, .btn-delete{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+

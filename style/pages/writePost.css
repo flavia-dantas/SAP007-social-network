@@ -1,0 +1,28 @@
+@import '../variables.css';
+
+.container-write-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40%;
+}
+
+.post-content{
+    width: 80%;
+    height: 25vh;
+    border: 3px solid var(--selective-yellow);
+    border-radius: 10px;
+    margin: 10% 0;
+    box-shadow: 1px 1px 10px var(--shadow);
+}
+
+.btn-post {
+    border-radius: 8px;
+    height: 35px;
+    width: 80%;
+    background-color: var(--selective-yellow);
+    border-color: var(--selective-yellow);
+    margin-top: 2%;     
+    font-size: 16px;    
+}

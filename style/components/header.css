@@ -1,0 +1,19 @@
+@import '../variables.css';
+
+.container-header{
+ width: 100vw;
+ height: 8vh ;
+ display: flex;
+ top:0;
+ position: fixed;
+ border-bottom: 1px solid var(--venetian-red);
+ background-color: var( --bg-color);
+}
+
+.logo-header{
+    width: auto;
+    height: 7vh;
+    margin: auto;
+    display: flex;
+}
+
