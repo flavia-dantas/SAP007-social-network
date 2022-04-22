@@ -65,7 +65,6 @@ export function postComponent(post) {
         postsContainer.remove();
     });
 
-
     const btnEdit = postsContainer.querySelector('#btnEdit');
     const textEditable = postsContainer.querySelector('#userPost');
     const btnConfirmEdit = postsContainer.querySelector('#btnConfirmEdit');
@@ -73,11 +72,13 @@ export function postComponent(post) {
     btnEdit.addEventListener("click", (e) => {
         e.preventDefault();
         textEditable.setAttribute('contenteditable', 'true');
-
+        textEditable.focus();
+        console.log(btnEdit, "botão editar");
     })
 
     btnConfirmEdit.addEventListener("click", (e) => {
         e.preventDefault();
+        textEditable.removeAttribute('contenteditable');
         editPost(post.id, textEditable.textContent);
     })
 
