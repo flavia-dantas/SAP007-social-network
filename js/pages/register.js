@@ -23,7 +23,7 @@ export default function register() {
             <p id="errorMessage" class="error-message"></p>
             <p class="subtitle">ou</p>
             <button type="submit" id="btnGoogle" class="btn-google"><img class="google-logo" src="./img/icon-google.png">Inscreva-se com Google</button>
-            <p>Tem uma conta? <a class= "option-login" href="/#login">Conecte-se</a></p>
+            <p>Tem uma conta? <a class= "option-login" href="#login">Conecte-se</a></p>
         </form>
     </div>
     `;
