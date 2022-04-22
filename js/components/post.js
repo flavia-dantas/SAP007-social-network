@@ -15,21 +15,21 @@ export function postComponent(post) {
         <div class="user-interactions">
             <div class="like-post">
                 <button id="btnLike" class="btn-like">
-                    <img src="../../img/icon-like-empty.png" alt="button-like">
+                    <img src="./img/icon-like-empty.png" alt="button-like">
                 </button>
                 <p id="numLikes" class="num-likes">${post.like.length}</p>
             </div>
             <div class="edit-post">
                 <button id="btnConfirmEdit" class="btn-confirm-edit">
-                    <img src="../../img/icon-confirm.png" alt="button-confirm-edit">
+                    <img src="./img/icon-confirm.png" alt="button-confirm-edit">
                 </button>
                 <button id="btnEdit" class="btn-edit">
-                    <img src="../../img/icon-edit.png" alt="button-edit">
+                    <img src="./img/icon-edit.png" alt="button-edit">
                 </button>
             </div>
             <div class="delete-post">
                 <button id="btnDelete" class="btn-delete">
-                    <img src="../../img/icon-delete.png" alt="button-delete">
+                    <img src="./img/icon-delete.png" alt="button-delete">
                 </button>
             </div>
         </div>`
