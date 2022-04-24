@@ -3,6 +3,7 @@ import { auth } from '../../lib/config-auth.js';
 
 export function postComponent(post) {
     const postsContainer = document.createElement('div');
+    const isAuthor = post.userEmail === auth.currentUser.email;
     postsContainer.classList.add("container-post")
     const templatePost = `   
             <div class="user-perfil">
@@ -19,6 +20,7 @@ export function postComponent(post) {
                 </button>
                 <p id="numLikes" class="num-likes">${post.like.length}</p>
             </div>
+            ${isAuthor ? `
             <div class="edit-post">
                 <button id="btnConfirmEdit" class="btn-confirm-edit">
                     <img src="./img/icon-confirm.png" alt="button-confirm-edit">
@@ -31,7 +33,7 @@ export function postComponent(post) {
                 <button id="btnDelete" class="btn-delete">
                     <img src="./img/icon-delete.png" alt="button-delete">
                 </button>
-            </div>
+            </div> ` : ""}
         </div>`
 
     postsContainer.innerHTML = templatePost;
@@ -58,6 +60,7 @@ export function postComponent(post) {
         }
     });
 
+    if (isAuthor) {
     const btnDelete = postsContainer.querySelector('#btnDelete');
     btnDelete.addEventListener("click", (e) => {
         e.preventDefault();
@@ -71,7 +74,7 @@ export function postComponent(post) {
 
     btnEdit.addEventListener("click", (e) => {
         e.preventDefault();
-        textEditable.setAttribute('contenteditable', 'true');
+            textEditable.setAttribute('contenteditable', 'true');
         textEditable.focus();
         console.log(btnEdit, "botão editar");
     })
@@ -80,8 +83,8 @@ export function postComponent(post) {
         e.preventDefault();
         textEditable.removeAttribute('contenteditable');
         editPost(post.id, textEditable.textContent);
-    })
-
+    })    
+    };
     return postsContainer;
 };
 
