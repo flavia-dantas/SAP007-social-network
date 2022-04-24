@@ -1,11 +1,15 @@
-import { getAuth,
+import {
+  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup,
-  signOut } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
 
 export const auth = getAuth();
 const provider = new GoogleAuthProvider();
+const user = auth.createUser;
 
 export function createUser(email, password) {
   return createUserWithEmailAndPassword(auth, email, password)
@@ -52,4 +56,10 @@ export function googleLogin() {
       // ...
       return user;
     })
+};
+
+export function verifyUserLogged(callback) {
+  return onAuthStateChanged(auth, (user) => {
+    callback(user !== null);
+  });
 }
