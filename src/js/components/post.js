@@ -60,31 +60,66 @@ export function postComponent(post) {
         }
     });
 
+    function confirmDelete (){
+        const containerModal = document.createElement("div");
+        
+            const template = `
+            <div class="modalContainer">
+                <div id="modal" class="modal">
+                    <h4 class="dialog" id="dialog">Deseja realmente excluir este post? </h4>                
+                    <div>
+                        <button id="buttonYes" class="button-yes">Sim</button>
+                        <button id="buttonNo" class="button-No">Não</button>
+                    </div>          
+                </div>
+            </div>
+                `;
+              
+        containerModal.innerHTML = template;            
+        
+        const yes = containerModal.querySelector("#buttonYes");
+        const no = containerModal.querySelector("#buttonNo");
+
+        yes.addEventListener("click", () => {
+            deletePost(post.id);
+            postsContainer.remove();
+        });
+                        
+        no.addEventListener("click", () => {
+            containerModal.classList.add("close-modal");
+        });    
+
+        return containerModal;
+    }
+
     if (isAuthor) {
-    const btnDelete = postsContainer.querySelector('#btnDelete');
-    btnDelete.addEventListener("click", (e) => {
-        e.preventDefault();
-        deletePost(post.id);
-        postsContainer.remove();
-    });
+        const btnDelete = postsContainer.querySelector('#btnDelete');
+        console.log(btnDelete);
+        btnDelete.addEventListener("click", (e) => {        
+            e.preventDefault();     
+            postsContainer.appendChild(confirmDelete());
+            console.log(confirmDelete);
+        });      
 
-    const btnEdit = postsContainer.querySelector('#btnEdit');
-    const textEditable = postsContainer.querySelector('#userPost');
-    const btnConfirmEdit = postsContainer.querySelector('#btnConfirmEdit');
+        
+        const btnEdit = postsContainer.querySelector('#btnEdit');
+        const textEditable = postsContainer.querySelector('#userPost');
+        const btnConfirmEdit = postsContainer.querySelector('#btnConfirmEdit');
 
-    btnEdit.addEventListener("click", (e) => {
+        btnEdit.addEventListener("click", (e) => {
         e.preventDefault();
             textEditable.setAttribute('contenteditable', 'true');
-        textEditable.focus();
-        console.log(btnEdit, "botão editar");
-    })
+            textEditable.focus();
+            console.log(btnEdit, "botão editar");
+        })
 
-    btnConfirmEdit.addEventListener("click", (e) => {
+        btnConfirmEdit.addEventListener("click", (e) => {
         e.preventDefault();
-        textEditable.removeAttribute('contenteditable');
-        editPost(post.id, textEditable.textContent);
-    })    
+            textEditable.removeAttribute('contenteditable');
+            editPost(post.id, textEditable.textContent);
+        })    
     };
+
     return postsContainer;
 };
 

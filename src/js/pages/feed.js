@@ -4,6 +4,7 @@ import { postComponent } from '../components/post.js';
 import { navbar } from '../components/navbar.js';
 import { header } from '../components/header.js';
 
+
 export default function feed() {
     const container = document.createElement('section');
     const template = `
@@ -22,8 +23,10 @@ export default function feed() {
         allPosts.forEach(item => {
             const postElement = postComponent(item);
             sectionPost.prepend(postElement);
+            
         })
     }
+    
     showAllPosts();
     return container
 }
