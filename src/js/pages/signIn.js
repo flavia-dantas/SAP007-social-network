@@ -28,14 +28,14 @@ export default function login() {
     `;
     container.innerHTML = template;
 
+    const formLogin = container.querySelector('.form-login');
     const email = container.querySelector('#inputEmail');
     const password = container.querySelector('#inputPassword');
-    const btnSignIn = container.querySelector('#btnLogin');
     const btnLoginGoogle = container.querySelector('#btnGoogle');
     const errorMessage = container.querySelector('#errorMessage');
 
 
-    btnSignIn.addEventListener("click", (e) => {
+    formLogin.addEventListener("submit", (e) => {
         e.preventDefault();
         signIn(email.value, password.value)
             .then(function () {

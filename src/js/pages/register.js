@@ -29,14 +29,14 @@ export default function register() {
     `;
     container.innerHTML = template;
 
+    const formRegister = container.querySelector('.form-register');
     const email = container.querySelector('#inputEmail');
     const password = container.querySelector('#inputPassword');
-    const btnRegister = container.querySelector('#btnRegister');
     const btnRegisterGoogle = container.querySelector('#btnGoogle');
     const errorMessage = container.querySelector('#errorMessage');
 
 
-    btnRegister.addEventListener('click', (e) => {
+    formRegister.addEventListener('submit', (e) => {
         e.preventDefault();
         createUser(email.value, password.value)
             .then(function () {
