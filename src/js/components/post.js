@@ -1,4 +1,4 @@
-import { deletePost, like, deslike, editPost } from '../../lib/config-firestore.js';
+import { deletePost, like, dislike, editPost } from '../../lib/config-firestore.js';
 import { auth } from '../../lib/config-auth.js';
 
 export function postComponent(post) {
@@ -16,7 +16,7 @@ export function postComponent(post) {
         <div class="user-interactions">
             <div class="like-post">
                 <button id="btnLike" class="btn-like">
-                    <img src="./img/icon-like-empty.png" alt="button-like">
+                    <img id="imgLike"class="img-like" src="./img/icon-like-empty.png" alt="button-like">
                 </button>
                 <p id="numLikes" class="num-likes">${post.like.length}</p>
             </div>
@@ -40,22 +40,25 @@ export function postComponent(post) {
 
     const btnLike = postsContainer.querySelector('#btnLike');
     const numLikes = postsContainer.querySelector('#numLikes');
+    const heart = postsContainer.querySelector('#imgLike');
 
     btnLike.addEventListener('click', () => {
         const likePost = post.like
-        if (likePost.includes(auth.currentUser.email)) {
-            deslike(post.id, auth.currentUser.email).then(() => {
-                likePost.splice(auth.currentUser.email);
-                const showLike = Number(numLikes.innerHTML) - 1;
-                numLikes.innerHTML = showLike;
-                console.log(numLikes, "deslike");
-            })
-        } else {
+        if (!likePost.includes(auth.currentUser.email)) {
             like(post.id, auth.currentUser.email).then(() => {
+                heart.setAttribute('src', './img/icon-like.png');
                 likePost.push(auth.currentUser.email);
                 const showLike = Number(numLikes.innerHTML) + 1;
                 numLikes.innerHTML = showLike;
                 console.log(numLikes, "like");
+            })
+        } else {
+            dislike(post.id, auth.currentUser.email).then(() => {
+                heart.setAttribute('src', './img/icon-like-empty.png');
+                likePost.splice(auth.currentUser.email);
+                const showLike = Number(numLikes.innerHTML) - 1;
+                numLikes.innerHTML = showLike;
+                console.log(numLikes, "dislike");
             })
         }
     });
