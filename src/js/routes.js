@@ -2,6 +2,7 @@ import register from "./pages/register.js";
 import login from "./pages/signIn.js";
 import feed from "./pages/feed.js";
 import writePost from "./pages/writePost.js";
+import { verifyUserLogged } from "../lib/config-auth.js";
 
 const main = document.getElementById('root');
 
@@ -14,11 +15,23 @@ const redirect = () => {
             main.appendChild(register());
             break;
         case '#feed':
-            main.appendChild(feed());
+            verifyUserLogged((loggedIn) => {
+                if (loggedIn) {
+                    main.appendChild(feed());
+                } else {
+                    window.location.hash = "#login";
+                }
+            })
             break;
         case '#writePost':
-            main.appendChild(writePost());
-             break;
+            verifyUserLogged((loggedIn) => {
+                if (loggedIn) {
+                    main.appendChild(writePost());
+                } else {
+                    window.location.hash = "#login";
+                }
+            })
+            break;
         default:
             main.appendChild(login());
     }
@@ -33,7 +46,6 @@ const init = () => {
 };
 
 window.addEventListener('load', () => {
-    // console.log("aqui!")
     redirect();
     init();
 });
