@@ -13,10 +13,13 @@
     height: 25vh;
     border: 3px solid var(--selective-yellow);
     border-radius: 10px;
-    margin: 10% 0;
-    box-shadow: 1px 1px 10px var(--shadow);
+    margin: 5% 0;
 }
 
+.message-post{
+    text-align: center;
+    color: var(--venetian-red);
+}
 .btn-post {
     border-radius: 8px;
     height: 35px;
