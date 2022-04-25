@@ -31,8 +31,13 @@
     flex-wrap: wrap;
 }
 
-.required-item, .register, .subtitle {
+.required-item, .subtitle {
     color: var(--venetian-red);
+    font-weight: bold;  
+}
+
+.subtitle{
+    text-align: center;
 }
 
 .input-email, .input-password {
@@ -41,6 +46,11 @@
     font-size: 19px;
     border-color: var(--selective-yellow);
     margin-top: 8px;
+}
+
+.error-message{
+    text-align: center;
+    color: var(--venetian-red);
 }
 
 .btn-login {
@@ -71,6 +81,5 @@
 
 .option-register {
     color: var(--venetian-red);
-    font-weight: bold;
-    
+    font-weight: bold;  
 }

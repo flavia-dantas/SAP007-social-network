@@ -31,6 +31,20 @@
     flex-wrap: wrap;
 }
 
+.required-item, .subtitle {
+    color: var(--venetian-red);
+    font-weight: bold;  
+}
+
+.subtitle{
+    text-align: center;
+}
+
+.error-message{
+    text-align: center;
+    color: var(--venetian-red);
+}
+
 .btn-register {
     border-radius: 8px;
     height: 35px;
@@ -44,8 +58,4 @@
 .option-login {
     color: var(--venetian-red);
     font-weight: bold;
-}
-
-.have-count{
-    margin-top: auto;
 }

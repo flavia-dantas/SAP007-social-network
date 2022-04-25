@@ -3,6 +3,7 @@ import { auth } from '../../lib/config-auth.js';
 
 export function postComponent(post) {
     const postsContainer = document.createElement('div');
+    const isAuthor = post.userEmail === auth.currentUser.email;
     postsContainer.classList.add("container-post")
     const templatePost = `   
             <div class="user-perfil">
@@ -19,6 +20,7 @@ export function postComponent(post) {
                 </button>
                 <p id="numLikes" class="num-likes">${post.like.length}</p>
             </div>
+            ${isAuthor ? `
             <div class="edit-post">
                 <button id="btnConfirmEdit" class="btn-confirm-edit">
                     <img src="./img/icon-confirm.png" alt="button-confirm-edit">
@@ -31,7 +33,7 @@ export function postComponent(post) {
                 <button id="btnDelete" class="btn-delete">
                     <img src="./img/icon-delete.png" alt="button-delete">
                 </button>
-            </div>
+            </div> ` : ""}
         </div>`
 
     postsContainer.innerHTML = templatePost;
@@ -58,29 +60,65 @@ export function postComponent(post) {
         }
     });
 
-    const btnDelete = postsContainer.querySelector('#btnDelete');
-    btnDelete.addEventListener("click", (e) => {
-        e.preventDefault();
-        deletePost(post.id);
-        postsContainer.remove();
-    });
+    function confirmDelete (){
+        const containerModal = document.createElement("div");
+        
+            const template = `
+            <div class="modalContainer">
+                <div id="modal" class="modal">
+                    <h4 class="dialog" id="dialog">Deseja realmente excluir este post? </h4>                
+                    <div>
+                        <button id="buttonYes" class="button-yes">Sim</button>
+                        <button id="buttonNo" class="button-No">Não</button>
+                    </div>          
+                </div>
+            </div>
+                `;
+              
+        containerModal.innerHTML = template;            
+        
+        const yes = containerModal.querySelector("#buttonYes");
+        const no = containerModal.querySelector("#buttonNo");
 
-    const btnEdit = postsContainer.querySelector('#btnEdit');
-    const textEditable = postsContainer.querySelector('#userPost');
-    const btnConfirmEdit = postsContainer.querySelector('#btnConfirmEdit');
+        yes.addEventListener("click", () => {
+            deletePost(post.id);
+            postsContainer.remove();
+        });
+                        
+        no.addEventListener("click", () => {
+            containerModal.classList.add("close-modal");
+        });    
 
-    btnEdit.addEventListener("click", (e) => {
-        e.preventDefault();
-        textEditable.setAttribute('contenteditable', 'true');
-        textEditable.focus();
-        console.log(btnEdit, "botão editar");
-    })
+        return containerModal;
+    }
 
-    btnConfirmEdit.addEventListener("click", (e) => {
+    if (isAuthor) {
+        const btnDelete = postsContainer.querySelector('#btnDelete');
+        console.log(btnDelete);
+        btnDelete.addEventListener("click", (e) => {        
+            e.preventDefault();     
+            postsContainer.appendChild(confirmDelete());
+            console.log(confirmDelete);
+        });      
+
+        
+        const btnEdit = postsContainer.querySelector('#btnEdit');
+        const textEditable = postsContainer.querySelector('#userPost');
+        const btnConfirmEdit = postsContainer.querySelector('#btnConfirmEdit');
+
+        btnEdit.addEventListener("click", (e) => {
         e.preventDefault();
-        textEditable.removeAttribute('contenteditable');
-        editPost(post.id, textEditable.textContent);
-    })
+            textEditable.setAttribute('contenteditable', 'true');
+            textEditable.focus();
+            console.log(btnEdit, "botão editar");
+        })
+
+        btnConfirmEdit.addEventListener("click", (e) => {
+        e.preventDefault();
+            textEditable.removeAttribute('contenteditable');
+            editPost(post.id, textEditable.textContent);
+        })    
+    };
 
     return postsContainer;
 };
