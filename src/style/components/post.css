@@ -76,7 +76,7 @@
      
 }
 
-@keyframes animateHeart {
+/* @keyframes animateHeart {
     0% {
         transform: scale(.2);
     }
@@ -90,4 +90,4 @@
 
 .img-like:active {
     animation: animateHeart 1s;
-}
+} */
