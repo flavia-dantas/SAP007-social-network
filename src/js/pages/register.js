@@ -1,9 +1,9 @@
-import '../../lib/config-firebase.js';
-import { createUser, googleLogin } from '../../lib/config-auth.js';
+import "../../lib/config-firebase.js";
+import { createUser, googleLogin } from "../../lib/config-auth.js";
 
 export default function register() {
-    const container = document.createElement('section');
-    const template = `
+  const container = document.createElement("section");
+  const template = `
 
     <div class="container-register">
         <div class="logo">
@@ -27,47 +27,46 @@ export default function register() {
         </form>
     </div>
     `;
-    container.innerHTML = template;
+  container.innerHTML = template;
 
-    const formRegister = container.querySelector('.form-register');
-    const email = container.querySelector('#inputEmail');
-    const password = container.querySelector('#inputPassword');
-    const btnRegisterGoogle = container.querySelector('#btnGoogle');
-    const errorMessage = container.querySelector('#errorMessage');
+  const formRegister = container.querySelector(".form-register");
+  const email = container.querySelector("#inputEmail");
+  const password = container.querySelector("#inputPassword");
+  const btnRegisterGoogle = container.querySelector("#btnGoogle");
+  const errorMessage = container.querySelector("#errorMessage");
 
+  formRegister.addEventListener("submit", (e) => {
+    e.preventDefault();
+    createUser(email.value, password.value)
+      .then(() => {
+        window.location.hash = "#feed";
+      })
+      .catch((error) => {
+        if (email.value === "" || password.value === "") {
+          errorMessage.innerHTML = "Por favor, preencha todos os campos.";
+        } else if (error.code === "auth/email-already-in-use") {
+          errorMessage.innerHTML = "E-mail já cadastrado";
+        } else if (error.code === "auth/uid-already-exists") {
+          errorMessage.innerHTML = "E-mail já cadastrado";
+        } else if (error.code === "auth/invalid-email") {
+          errorMessage.innerHTML = "E-mail inválido";
+        } else if (error.code === "auth/weak-password") {
+          errorMessage.innerHTML = "Senha fraca";
+        } else {
+          errorMessage.innerHTML = "Algo deu errado. Tente novamente.";
+        }
+      });
+  });
 
-    formRegister.addEventListener('submit', (e) => {
-        e.preventDefault();
-        createUser(email.value, password.value)
-            .then(function () {
-                window.location.hash = '#feed';
-            })
-            .catch((error) => {
-                if (email.value === '' || password.value === '') {
-                    errorMessage.innerHTML = "Por favor, preencha todos os campos.";
-                } else if (error.code === 'auth/email-already-in-use') {
-                    errorMessage.innerHTML = 'E-mail já cadastrado';
-                } else if (error.code === 'auth/uid-already-exists') {
-                    errorMessage.innerHTML = 'E-mail já cadastrado';
-                } else if (error.code === 'auth/invalid-email') {
-                    errorMessage.innerHTML = 'E-mail inválido';
-                } else if (error.code === 'auth/weak-password') {
-                    errorMessage.innerHTML = 'Senha fraca';
-                } else {
-                    errorMessage.innerHTML = 'Algo deu errado. Tente novamente.';
-                }
-            });
-    });
-
-    btnRegisterGoogle.addEventListener('click', (e) => {
-        e.preventDefault();
-        // console.log("Vamos Google")
-        googleLogin()
-            .then(() => {
-                window.location.hash = 'feed';
-            }).catch((error) => {
-                console.log(error);
-            })
-    });
-    return container;
+  btnRegisterGoogle.addEventListener("click", (e) => {
+    e.preventDefault();
+    // console.log("Vamos Google")
+    googleLogin()
+      .then(() => {
+        window.location.hash = "feed";
+      }).catch((error) => {
+        console.log(error);
+      });
+  });
+  return container;
 }
