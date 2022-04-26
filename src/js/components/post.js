@@ -2,8 +2,9 @@ import { deletePost, like, dislike, editPost } from '../../lib/config-firestore.
 import { auth } from '../../lib/config-auth.js';
 
 export function postComponent(post) {
-    const postsContainer = document.createElement('div');
     const isAuthor = post.userEmail === auth.currentUser.email;
+    const likePost = post.like
+    const postsContainer = document.createElement('div');
     postsContainer.classList.add("container-post")
     const templatePost = `   
             <div class="user-perfil">
@@ -16,7 +17,8 @@ export function postComponent(post) {
         <div class="user-interactions">
             <div class="like-post">
                 <button id="btnLike" class="btn-like">
-                    <img id="imgLike"class="img-like" src="./img/icon-like-empty.png" alt="button-like">
+                    <img id="imgLike" class="img-like" ${likePost.includes(auth.currentUser.email) ?
+                    'src="./img/icon-like.png"' : 'src="./img/icon-like-empty.png"' } alt="button-like">
                 </button>
                 <p id="numLikes" class="num-likes">${post.like.length}</p>
             </div>
@@ -43,7 +45,7 @@ export function postComponent(post) {
     const heart = postsContainer.querySelector('#imgLike');
 
     btnLike.addEventListener('click', () => {
-        const likePost = post.like
+        
         if (!likePost.includes(auth.currentUser.email)) {
             like(post.id, auth.currentUser.email).then(() => {
                 heart.setAttribute('src', './img/icon-like.png');
@@ -67,12 +69,12 @@ export function postComponent(post) {
         const containerModal = document.createElement("div");
         
             const template = `
-            <div class="modalContainer">
+            <div class="modal-container">
                 <div id="modal" class="modal">
                     <h4 class="dialog" id="dialog">Deseja realmente excluir este post? </h4>                
                     <div>
                         <button id="buttonYes" class="button-yes">Sim</button>
-                        <button id="buttonNo" class="button-No">Não</button>
+                        <button id="buttonNo" class="button-no">Não</button>
                     </div>          
                 </div>
             </div>
@@ -130,4 +132,3 @@ const convertTimestamp = (timestamp) => {
     let date = timestamp.toDate();
     return date.toLocaleString("pt-br");
 };
-
