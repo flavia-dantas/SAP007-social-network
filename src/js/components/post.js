@@ -132,7 +132,3 @@ const convertTimestamp = (timestamp) => {
     let date = timestamp.toDate();
     return date.toLocaleString("pt-br");
 };
-
-/* <img id="imgLike" class='${likePost.includes(auth.currentUser.email) ? 'liked' : 'not-like'}' alt="button-like"> */
-/* <img id="imgLike" ${likePost.includes(auth.currentUser.email) ? liked : notLiked } alt="button-like"> */
-/* <img id="imgLike" ${likePost.includes(auth.currentUser.email) ? 'src="./img/icon-like.png"' : 'src="./img/icon-like-empty.png"' } alt="button-like"> */
