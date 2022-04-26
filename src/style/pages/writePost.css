@@ -5,7 +5,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 40%;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
 }
 
 .post-content{

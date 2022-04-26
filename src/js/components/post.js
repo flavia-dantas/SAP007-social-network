@@ -69,12 +69,12 @@ export function postComponent(post) {
         const containerModal = document.createElement("div");
         
             const template = `
-            <div class="modalContainer">
+            <div class="modal-container">
                 <div id="modal" class="modal">
                     <h4 class="dialog" id="dialog">Deseja realmente excluir este post? </h4>                
                     <div>
                         <button id="buttonYes" class="button-yes">Sim</button>
-                        <button id="buttonNo" class="button-No">Não</button>
+                        <button id="buttonNo" class="button-no">Não</button>
                     </div>          
                 </div>
             </div>
