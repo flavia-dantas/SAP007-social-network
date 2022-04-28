@@ -10,7 +10,7 @@ import {
   arrayRemove,
   doc,
   deleteDoc,
-} from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
+} from "./exports.js";
 
 const db = getFirestore();
 
