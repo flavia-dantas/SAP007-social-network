@@ -3,11 +3,20 @@
 */
 
 import { postComponent } from "../../../src/js/components/post.js";
+import { getAuth } from "../../../src/lib/exports.js";
 
-it("postComponent cria o elemento de post", () => {
+jest.mock("../../../src/lib/exports.js");
+
+it("postComponent creates the post element", () => {
+  const authentication = {
+    currentUser: {
+      email: "user@user.com",
+    },
+  };
+  getAuth.mockReturnValueOnce(authentication);
   const post = {
     textPost: "teste",
-    userEmail: "lidianne@gmail.com",
+    userEmail: "user@user.com",
     date: "11/04/2022",
   };
   const component = postComponent(post);
