@@ -26,6 +26,8 @@ export default function writePost() {
     e.preventDefault();
     if (postContent.value === "") {
       messagePost.innerHTML = "O campo está vazio, verifique.";
+    } else if (postContent.value.length < 20) {
+      messagePost.innerHTML = "Sua indicação deverá ser maior que 20 caracteres";
     } else {
       createPost(postContent.value, auth.currentUser.email);
       window.location.hash = "#feed";

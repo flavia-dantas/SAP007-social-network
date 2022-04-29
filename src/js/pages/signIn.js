@@ -28,31 +28,33 @@ export default function login() {
     `;
   container.innerHTML = template;
 
-  const formLogin = container.querySelector(".form-login");
   const email = container.querySelector("#inputEmail");
   const password = container.querySelector("#inputPassword");
   const btnLoginGoogle = container.querySelector("#btnGoogle");
+  const btnLogin = container.querySelector("#btnLogin");
   const errorMessage = container.querySelector("#errorMessage");
 
-  formLogin.addEventListener("submit", (e) => {
+  btnLogin.addEventListener("click", (e) => {
     e.preventDefault();
-    signIn(email.value, password.value)
-      .then(() => {
-        window.location.hash = "#feed";
-      })
-      .catch((error) => {
-        if (email.value === "" || password.value === "") {
-          errorMessage.innerHTML = "Por favor, preencha todos os campos.";
-        } else if (error.code === "auth/invalid-email") {
-          errorMessage.innerHTML = "E-mail inválido.";
-        } else if (error.code === "auth/user-not-found") {
-          errorMessage.innerHTML = "E-mail não encontrado.";
-        } else if (error.code === "auth/wrong-password") {
-          errorMessage.innerHTML = "Senha incorreta";
-        } else {
-          errorMessage.innerHTML = "Algo deu errado. Tente novamente.";
-        }
-      });
+    if (email.value && password.value) {
+      signIn(email.value, password.value)
+        .then(() => {
+          window.location.hash = "#feed";
+        })
+        .catch((error) => {
+          if (error.code === "auth/invalid-email") {
+            errorMessage.innerHTML = "E-mail inválido.";
+          } else if (error.code === "auth/user-not-found") {
+            errorMessage.innerHTML = "E-mail não encontrado.";
+          } else if (error.code === "auth/wrong-password") {
+            errorMessage.innerHTML = "Senha incorreta";
+          } else {
+            errorMessage.innerHTML = "Algo deu errado. Tente novamente.";
+          }
+        });
+    } else if (email.value === "" || password.value === "") {
+      errorMessage.innerHTML = "Por favor, preencha todos os campos.";
+    }
   });
 
   btnLoginGoogle.addEventListener("click", (e) => {
@@ -61,7 +63,8 @@ export default function login() {
       .then(() => {
         window.location.hash = "#feed";
       }).catch((error) => {
-        console.log(error);
+        errorMessage.innerHTML = "Algo deu errado. Tente novamente.";
+        return error;
       });
   });
   return container;

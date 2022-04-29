@@ -14,11 +14,11 @@ export default function register() {
             <label class="label-form">E-mail
                 <span class="required-item">*</span>
             </label>
-            <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exemplo.com" autocomplete="on"/>
+            <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exemplo.com" autocomplete="on">
             <label class="label-form">Senha
                 <span class="required-item">*</span>
             </label>
-            <input type="password" id="inputPassword" class="input-password" placeholder="******" minlength="6" required/>
+            <input type="password" id="inputPassword" class="input-password" placeholder="******" minlength="6">
             <p id="errorMessage" class="error-message"></p>
             <button id="btnRegister" class="btn-register">Cadastrar</button>
             <p class="subtitle">ou</p>
@@ -29,33 +29,35 @@ export default function register() {
     `;
   container.innerHTML = template;
 
-  const btnRegister = container.querySelector("#btnRegister");
   const email = container.querySelector("#inputEmail");
   const password = container.querySelector("#inputPassword");
+  const btnRegister = container.querySelector("#btnRegister");
   const btnRegisterGoogle = container.querySelector("#btnGoogle");
   const errorMessage = container.querySelector("#errorMessage");
 
   btnRegister.addEventListener("click", (e) => {
     e.preventDefault();
-    createUser(email.value, password.value)
-      .then(() => {
-        window.location.hash = "#feed";
-      })
-      .catch((error) => {
-        if (email.value === "" || password.value === "") {
-          errorMessage.innerHTML = "Por favor, preencha todos os campos.";
-        } else if (error.code === "auth/email-already-in-use") {
-          errorMessage.innerHTML = "E-mail já cadastrado";
-        } else if (error.code === "auth/uid-already-exists") {
-          errorMessage.innerHTML = "E-mail já cadastrado";
-        } else if (error.code === "auth/invalid-email") {
-          errorMessage.innerHTML = "E-mail inválido";
-        } else if (error.code === "auth/weak-password") {
-          errorMessage.innerHTML = "Senha fraca";
-        } else {
-          errorMessage.innerHTML = "Algo deu errado. Tente novamente.";
-        }
-      });
+    if (email.value && password.value) {
+      createUser(email.value, password.value)
+        .then(() => {
+          window.location.hash = "#feed";
+        })
+        .catch((error) => {
+          if (error.code === "auth/email-already-in-use") {
+            errorMessage.innerHTML = "E-mail já cadastrado";
+          } else if (error.code === "auth/uid-already-exists") {
+            errorMessage.innerHTML = "E-mail já cadastrado";
+          } else if (error.code === "auth/invalid-email") {
+            errorMessage.innerHTML = "E-mail inválido";
+          } else if (error.code === "auth/weak-password") {
+            errorMessage.innerHTML = "Senha deve conter no mínimo 6 caracteres";
+          } else {
+            errorMessage.innerHTML = "Algo deu errado. Tente novamente.";
+          }
+        });
+    } else if (email.value === "" || password.value === "") {
+      errorMessage.innerHTML = "Por favor, preencha todos os campos.";
+    }
   });
 
   btnRegisterGoogle.addEventListener("click", (e) => {
@@ -65,7 +67,8 @@ export default function register() {
       .then(() => {
         window.location.hash = "feed";
       }).catch((error) => {
-        console.log(error);
+        errorMessage.innerHTML = "Algo deu errado. Tente novamente.";
+        return error;
       });
   });
   return container;
