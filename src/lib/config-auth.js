@@ -12,7 +12,7 @@ export const auth = getAuth();
 const provider = new GoogleAuthProvider();
 // const user = auth.createUser;
 
-export function createUser(email, password) {
+export function createUser(email, password) { 
   return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in

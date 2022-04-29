@@ -1,5 +1,8 @@
 export const getAuth = jest.fn();
-export const createUserWithEmailAndPassword = jest.fn();
+export const createUserWithEmailAndPassword = jest
+  .fn()
+//   .mockResolvedValueOnce("first call")
+  .mockRejectedValueOnce(new Error("Async error message"));
 export const signInWithEmailAndPassword = jest.fn();
 export const GoogleAuthProvider = jest.fn();
 export const signInWithPopup = jest.fn();
@@ -17,3 +20,4 @@ export const arrayUnion = jest.fn();
 export const arrayRemove = jest.fn();
 export const doc = jest.fn();
 export const deleteDoc = jest.fn();
+export const initializeApp = () => ({});

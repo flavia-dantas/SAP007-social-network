@@ -14,13 +14,13 @@ export default function register() {
             <label class="label-form">E-mail
                 <span class="required-item">*</span>
             </label>
-            <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exemplo.com" autocomplete="on" required/>
+            <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exemplo.com" autocomplete="on"/>
             <label class="label-form">Senha
                 <span class="required-item">*</span>
             </label>
             <input type="password" id="inputPassword" class="input-password" placeholder="******" minlength="6" required/>
             <p id="errorMessage" class="error-message"></p>
-            <button type="submit" id="btnRegister" class="btn-register">Cadastrar</button>
+            <button id="btnRegister" class="btn-register">Cadastrar</button>
             <p class="subtitle">ou</p>
             <button id="btnGoogle" class="btn-google"><img class="google-logo" src="./img/icon-google.png">Inscreva-se com Google</button>
             <p>Tem uma conta? <a class= "option-login" href="#login">Conecte-se</a></p>
@@ -29,13 +29,13 @@ export default function register() {
     `;
   container.innerHTML = template;
 
-  const formRegister = container.querySelector(".form-register");
+  const btnRegister = container.querySelector("#btnRegister");
   const email = container.querySelector("#inputEmail");
   const password = container.querySelector("#inputPassword");
   const btnRegisterGoogle = container.querySelector("#btnGoogle");
   const errorMessage = container.querySelector("#errorMessage");
 
-  formRegister.addEventListener("submit", (e) => {
+  btnRegister.addEventListener("click", (e) => {
     e.preventDefault();
     createUser(email.value, password.value)
       .then(() => {
