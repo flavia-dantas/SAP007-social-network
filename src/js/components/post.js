@@ -8,9 +8,9 @@ import {
 import { auth } from "../../lib/config-auth.js";
 
 export function postComponent(post) {
-  const userEmail = auth.currentUser.email;
+  const userId = auth.currentUser.uid;
 
-  const isAuthor = post.userEmail === userEmail;
+  const isAuthor = post.userName === userId;
   const likePost = post.like;
   const postsContainer = document.createElement("div");
   postsContainer.classList.add("container-post");
@@ -31,7 +31,7 @@ export function postComponent(post) {
         <div class="user-interactions">
             <div class="like-post">
                 <button id="btnLike" class="btn-like">
-                    <img id="imgLike" class="img-like" ${likePost.includes(userEmail) ? 'src="./img/icon-like.png"' : 'src="./img/icon-like-empty.png"'} alt="button-like">
+                    <img id="imgLike" class="img-like" ${likePost.includes(userId) ? 'src="./img/icon-like.png"' : 'src="./img/icon-like-empty.png"'} alt="button-like">
                 </button>
                 <p id="numLikes" class="num-likes">${post.like.length}</p>
             </div>
@@ -58,18 +58,18 @@ export function postComponent(post) {
   const heart = postsContainer.querySelector("#imgLike");
 
   btnLike.addEventListener("click", () => {
-    if (!likePost.includes(userEmail)) {
-      like(post.id, userEmail).then(() => {
+    if (!likePost.includes(userId)) {
+      like(post.id, userId).then(() => {
         heart.setAttribute("src", "./img/icon-like.png");
-        likePost.push(userEmail);
+        likePost.push(userId);
         const showLike = Number(numLikes.innerHTML) + 1;
         numLikes.innerHTML = showLike;
         console.log(numLikes, "like");
       });
     } else {
-      dislike(post.id, userEmail).then(() => {
+      dislike(post.id, userId).then(() => {
         heart.setAttribute("src", "./img/icon-like-empty.png");
-        likePost.splice(userEmail);
+        likePost.splice(userId);
         const showLike = Number(numLikes.innerHTML) - 1;
         numLikes.innerHTML = showLike;
         console.log(numLikes, "dislike");

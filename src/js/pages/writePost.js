@@ -9,8 +9,19 @@ export default function writePost() {
   const template = `    
     <div class="container-write-post">
         <p>Compartilhe sua indicação</p>
-        <textarea id="postContent" class="post-content" required></textarea>
-        <p id="messagePost" class="message-post"></p>
+        <label class="label-form">Nome do Estabelecimento:
+                <span class="required-item">*</span>
+        </label>
+        <input type="text" id="inputPlace" class="input-place">
+        <label class="label-form">Cidade:
+                <span class="required-item">*</span>
+        </label>
+        <input type="text" id="inputCity" class="input-city">
+         <label class="label-form">Sua indicação:
+                <span class="required-item">*</span>
+        </label>
+        <textarea id="postContent" class="post-content"></textarea>
+        <p id="errorMessage" class="error-message"></p>
         <button id="btnPost" class="btn-post">Postar</button>
     </div>`;
 
@@ -20,16 +31,20 @@ export default function writePost() {
 
   const postContent = container.querySelector("#postContent");
   const btnPost = container.querySelector("#btnPost");
-  const messagePost = container.querySelector("#messagePost");
+  const errorMessage = container.querySelector("#errorMessage");
+  const inputPlace = container.querySelector("#inputPlace");
+  const inputCity = container.querySelector("#inputCity");
 
   btnPost.addEventListener("click", (e) => {
     e.preventDefault();
-    if (postContent.value === "") {
-      messagePost.innerHTML = "O campo está vazio, verifique.";
+    if (postContent.value === "" || inputCity.value === "" || inputPlace.value === "") {
+      errorMessage.innerHTML = "O campo está vazio, verifique.";
+    } else if (inputCity.value.length < 2 && inputPlace.value.length < 2) {
+      errorMessage.innerHTML = "Cidade e Estabelecimento deverão ser maior que 2 caracteres";
     } else if (postContent.value.length < 20) {
-      messagePost.innerHTML = "Sua indicação deverá ser maior que 20 caracteres";
+      errorMessage.innerHTML = "Sua indicação deverá ser maior que 20 caracteres";
     } else {
-      createPost(postContent.value, auth.currentUser.email, auth.currentUser.name);
+      createPost(inputCity.value, inputPlace.value, postContent.value, auth.currentUser.name);
       window.location.hash = "#feed";
     }
   });
