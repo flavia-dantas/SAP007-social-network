@@ -4,6 +4,7 @@ export {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  updateProfile,
   signOut,
   onAuthStateChanged,
   } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js"; //eslint-disable-line

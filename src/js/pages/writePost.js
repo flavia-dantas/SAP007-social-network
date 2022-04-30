@@ -29,7 +29,7 @@ export default function writePost() {
     } else if (postContent.value.length < 20) {
       messagePost.innerHTML = "Sua indicação deverá ser maior que 20 caracteres";
     } else {
-      createPost(postContent.value, auth.currentUser.email);
+      createPost(postContent.value, auth.currentUser.email, auth.currentUser.name);
       window.location.hash = "#feed";
     }
   });

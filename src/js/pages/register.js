@@ -11,6 +11,10 @@ export default function register() {
         </div>
         <h3 class="register">Cadastro</h3>
         <form class="form-register">
+              <label class="label-form">Nome
+                <span class="required-item">*</span>
+              </label>
+              <input type="text" id="inputName" class="input-name" placeholder="Nome de Usuário">
             <label class="label-form">E-mail
                 <span class="required-item">*</span>
             </label>
@@ -29,6 +33,7 @@ export default function register() {
     `;
   container.innerHTML = template;
 
+  const userName = container.querySelector("#inputName");
   const email = container.querySelector("#inputEmail");
   const password = container.querySelector("#inputPassword");
   const btnRegister = container.querySelector("#btnRegister");
@@ -37,8 +42,8 @@ export default function register() {
 
   btnRegister.addEventListener("click", (e) => {
     e.preventDefault();
-    if (email.value && password.value) {
-      createUser(email.value, password.value)
+    if (userName.value && email.value && password.value) {
+      createUser(userName.value, email.value, password.value)
         .then(() => {
           window.location.hash = "#feed";
         })
@@ -55,7 +60,7 @@ export default function register() {
             errorMessage.innerHTML = "Algo deu errado. Tente novamente.";
           }
         });
-    } else if (email.value === "" || password.value === "") {
+    } else if (userName.value === "" || email.value === "" || password.value === "") {
       errorMessage.innerHTML = "Por favor, preencha todos os campos.";
     }
   });
