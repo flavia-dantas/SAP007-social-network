@@ -1,19 +1,24 @@
-export const getAuth = () => Promise.resolve();
-export const createUserWithEmailAndPassword = () => Promise.resolve();
-export const signInWithEmailAndPassword = () => Promise.resolve();
-export const GoogleAuthProvider = () => Promise.resolve();
-export const signInWithPopup = () => Promise.resolve();
-export const signOut = () => Promise.resolve();
-export const onAuthStateChanged = () => Promise.resolve();
+export const getAuth = jest.fn();
+export const createUserWithEmailAndPassword = jest
+  .fn()
+//   .mockResolvedValueOnce("first call")
+  .mockRejectedValueOnce(new Error("Async error message"));
+export const signInWithEmailAndPassword = jest.fn();
+export const GoogleAuthProvider = jest.fn();
+export const signInWithPopup = jest.fn();
+export const signOut = jest.fn();
+export const onAuthStateChanged = jest.fn();
+export const updateProfile = jest.fn();
 
-export const getFirestore = () => Promise.resolve();
-export const collection = () => Promise.resolve();
-export const addDoc = () => Promise.resolve();
-export const getDocs = () => Promise.resolve();
-export const updateDoc = () => Promise.resolve();
-export const orderBy = () => Promise.resolve();
-export const query = () => Promise.resolve();
-export const arrayUnion = () => Promise.resolve();
-export const arrayRemove = () => Promise.resolve();
-export const doc = () => Promise.resolve();
-export const deleteDoc = () => Promise.resolve();
+export const getFirestore = jest.fn();
+export const collection = jest.fn();
+export const addDoc = jest.fn();
+export const getDocs = jest.fn();
+export const updateDoc = jest.fn();
+export const orderBy = jest.fn();
+export const query = jest.fn();
+export const arrayUnion = jest.fn();
+export const arrayRemove = jest.fn();
+export const doc = jest.fn();
+export const deleteDoc = jest.fn();
+export const initializeApp = () => ({});

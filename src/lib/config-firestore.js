@@ -1,4 +1,5 @@
 import {
+  getAuth,
   getFirestore,
   collection,
   addDoc,
@@ -10,21 +11,25 @@ import {
   arrayRemove,
   doc,
   deleteDoc,
-} from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
+} from "./exports.js";
 
 const db = getFirestore();
+
+export const auth = getAuth();
 
 export const createPost = async (text, email) => {
   try {
     const docRef = await addDoc(collection(db, "post"), {
       textPost: text,
       userEmail: email,
+      userName: auth.currentUser.displayName,
       date: new Date(),
       like: [],
+      uid: auth.currentUser.uid,
     });
-    console.log("Document written with ID: ", docRef.id);
+    return docRef.id;
   } catch (e) {
-    console.error("Error adding document: ", e);
+    return null;
   }
 };
 
@@ -34,7 +39,6 @@ export const getPost = async () => {
   const querySnapshot = await getDocs(orderFirestore);
   querySnapshot.forEach((docPost) => {
     const timeline = docPost.data();
-    // console.log(`${doc.id} => ${doc.data()}`);
     arrPost.push({ ...timeline, id: docPost.id });
   });
   return arrPost;
@@ -43,10 +47,6 @@ export const getPost = async () => {
 export const like = async (idPost, userEmail) => {
   try {
     const docId = doc(db, "post", idPost);
-    console.log(idPost);
-    // const post = await getDoc(docId);
-    // console.log(post.data());
-    // const likes = post.data().like;
     return await updateDoc(docId, {
       like: arrayUnion(userEmail),
     });
@@ -69,7 +69,6 @@ export const dislike = async (idPost, userEmail) => {
 
 export const editPost = (idPost, text) => {
   const postIdEdit = doc(db, "post", idPost);
-  console.log(text);
   return updateDoc(postIdEdit, { textPost: text });
 };
 
