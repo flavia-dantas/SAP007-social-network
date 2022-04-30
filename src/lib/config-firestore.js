@@ -17,16 +17,18 @@ const db = getFirestore();
 
 export const auth = getAuth();
 
-export const createPost = async (city, place, text) => {
+export const createPost = async (place, city, text) => {
+  const user = auth.currentUser;
   try {
     const docRef = await addDoc(collection(db, "post"), {
-      textCity: city,
       textPlace: place,
+      textCity: city,
       textPost: text,
-      userName: auth.currentUser.displayName,
+      userName: user.displayName,
+      email: user.email,
       date: new Date(),
       like: [],
-      uid: auth.currentUser.uid,
+      user: user.uid,
     });
     return docRef.id;
   } catch (e) {

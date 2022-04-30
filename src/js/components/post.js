@@ -9,8 +9,8 @@ import { auth } from "../../lib/config-auth.js";
 
 export function postComponent(post) {
   const userId = auth.currentUser.uid;
-
-  const isAuthor = post.userName === userId;
+  const postId = post.id;
+  const isAuthor = post.user === userId;
   const likePost = post.like;
   const postsContainer = document.createElement("div");
   postsContainer.classList.add("container-post");
@@ -26,6 +26,8 @@ export function postComponent(post) {
             <p class="date-post">${(convertTimestamp(post.date))}</p>
         </div>
         <div class="post-field">
+            <p id="placePost" class="place-post">${post.textPlace}</p>
+            <p id="cityPost" class="city-post">${post.textCity}</p>
             <p id="userPost" class="user-post">${post.textPost}</p>
         </div>
         <div class="user-interactions">
@@ -33,7 +35,7 @@ export function postComponent(post) {
                 <button id="btnLike" class="btn-like">
                     <img id="imgLike" class="img-like" ${likePost.includes(userId) ? 'src="./img/icon-like.png"' : 'src="./img/icon-like-empty.png"'} alt="button-like">
                 </button>
-                <p id="numLikes" class="num-likes">${post.like.length}</p>
+                <p id="numLikes" class="num-likes">${likePost.length}</p>
             </div>
             ${isAuthor ? `
             <div class="edit-post">
@@ -59,7 +61,7 @@ export function postComponent(post) {
 
   btnLike.addEventListener("click", () => {
     if (!likePost.includes(userId)) {
-      like(post.id, userId).then(() => {
+      like(postId, userId).then(() => {
         heart.setAttribute("src", "./img/icon-like.png");
         likePost.push(userId);
         const showLike = Number(numLikes.innerHTML) + 1;
@@ -67,7 +69,7 @@ export function postComponent(post) {
         console.log(numLikes, "like");
       });
     } else {
-      dislike(post.id, userId).then(() => {
+      dislike(postId, userId).then(() => {
         heart.setAttribute("src", "./img/icon-like-empty.png");
         likePost.splice(userId);
         const showLike = Number(numLikes.innerHTML) - 1;
@@ -96,7 +98,7 @@ export function postComponent(post) {
     const no = containerModal.querySelector("#buttonNo");
 
     yes.addEventListener("click", () => {
-      deletePost(post.id);
+      deletePost(postId);
       postsContainer.remove();
     });
 
@@ -130,7 +132,7 @@ export function postComponent(post) {
     btnConfirmEdit.addEventListener("click", (e) => {
       e.preventDefault();
       textEditable.removeAttribute("contenteditable");
-      editPost(post.id, textEditable.textContent);
+      editPost(postId, textEditable.textContent);
     });
   }
 

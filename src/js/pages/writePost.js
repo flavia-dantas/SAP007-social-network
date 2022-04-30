@@ -1,5 +1,5 @@
 import "../../lib/config-firebase.js";
-import { auth } from "../../lib/config-auth.js";
+// import { auth } from "../../lib/config-auth.js";
 import { createPost } from "../../lib/config-firestore.js";
 import { navbar } from "../components/navbar.js";
 import { header } from "../components/header.js";
@@ -10,17 +10,17 @@ export default function writePost() {
     <div class="container-write-post">
         <p>Compartilhe sua indicação</p>
         <label class="label-form">Nome do Estabelecimento:
-                <span class="required-item">*</span>
+          <span class="required-item">*</span>
         </label>
-        <input type="text" id="inputPlace" class="input-place">
+        <input type="text" id="inputPlace" class="input-place" placeholder="Estabelecimento">
         <label class="label-form">Cidade:
-                <span class="required-item">*</span>
+          <span class="required-item">*</span>
         </label>
-        <input type="text" id="inputCity" class="input-city">
+        <input type="text" id="inputCity" class="input-city" placeholder="Cidade">
          <label class="label-form">Sua indicação:
-                <span class="required-item">*</span>
+          <span class="required-item">*</span>
         </label>
-        <textarea id="postContent" class="post-content"></textarea>
+        <textarea id="postContent" class="post-content" rows="5" cols="30" placeholder="Compartilhe sua experiência aqui..."></textarea>
         <p id="errorMessage" class="error-message"></p>
         <button id="btnPost" class="btn-post">Postar</button>
     </div>`;
@@ -44,7 +44,7 @@ export default function writePost() {
     } else if (postContent.value.length < 20) {
       errorMessage.innerHTML = "Sua indicação deverá ser maior que 20 caracteres";
     } else {
-      createPost(inputCity.value, inputPlace.value, postContent.value, auth.currentUser.name);
+      createPost(inputPlace.value, inputCity.value, postContent.value);
       window.location.hash = "#feed";
     }
   });
