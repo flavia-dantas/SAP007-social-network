@@ -9,6 +9,7 @@ import { auth } from "../../lib/config-auth.js";
 
 export function postComponent(post) {
   const userEmail = auth.currentUser.email;
+
   const isAuthor = post.userEmail === userEmail;
   const likePost = post.like;
   const postsContainer = document.createElement("div");
@@ -21,7 +22,7 @@ export function postComponent(post) {
 
   const templatePost = `   
             <div class="user-perfil">
-            <h4 class="user-email">${post.userEmail}</h4>
+            <h4 class="user-email">${post.userName}</h4>
             <p class="date-post">${(convertTimestamp(post.date))}</p>
         </div>
         <div class="post-field">
