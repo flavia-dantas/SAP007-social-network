@@ -2,33 +2,41 @@
 
 .container-register{
     background-color: white;
-    border: 2px solid var(--selective-yellow);
-    height: 99.5vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
 }
 
-.logo-gfv{
+.logotipo{
+    width: 100vw;
+    display: flex;  
+}
+
+.logo{
     width: 50%;
-    margin-top: 35px;
-    justify-items: center;
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    align-items: center;
+    padding: 5% 0;
 }
 
 .register {
     text-align: center;
     color: var(--venetian-red);
-    margin-top: 30%;
+    margin: 3% 0;
 }
 
 .form-register{
     display: flex;
+    min-width: 320px;
+    min-height: 455px;
     align-content: center;
     flex-direction: column;
     flex-wrap: wrap;
+    border: 3px solid var(--selective-yellow);
+    border-radius: 15px;
+    margin: 0 auto;
 }
 
 .required-item, .subtitle {
@@ -36,26 +44,52 @@
     font-weight: bold;  
 }
 
+.input-email, .input-password, .input-name {
+    border-radius: 8px;
+    margin-bottom: 2%;
+    font-size: 1rem;
+    border:2px solid var(--selective-yellow);
+    margin-top: 8px;
+    width: 280px;
+    height: 25px;
+}
+
 .subtitle{
     text-align: center;
+    margin: 3% 0;
 }
 
 .error-message{
     text-align: center;
     color: var(--venetian-red);
+    font-size: 0.7rem;
+    margin-top: 2%;
+    font-weight: bold;
+    width: 90%;  
 }
 
 .btn-register {
-    border-radius: 8px;
+    width: 280px;
     height: 35px;
     background-color: var(--selective-yellow);
-    border-color: var(--selective-yellow);
+    border:2px solid var(--selective-yellow);
+    border-radius: 8px;
     margin-top: 10%;
     margin-bottom: 3%;
-    font-size: 16px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-register:hover{
+    background-color: var(--mikado-yellow);
+}
+
+.text-register{
+    margin: 2% auto;
 }
 
 .option-login {
     color: var(--venetian-red);
-    font-weight: bold;
+    font-weight: bold;  
+    cursor: pointer;
 }
