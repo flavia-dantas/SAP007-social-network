@@ -17,15 +17,18 @@ const db = getFirestore();
 
 export const auth = getAuth();
 
-export const createPost = async (text, email) => {
+export const createPost = async (place, city, text) => {
+  const user = auth.currentUser;
   try {
     const docRef = await addDoc(collection(db, "post"), {
+      textPlace: place,
+      textCity: city,
       textPost: text,
-      userEmail: email,
-      userName: auth.currentUser.displayName,
+      userName: user.displayName,
+      email: user.email,
       date: new Date(),
       like: [],
-      uid: auth.currentUser.uid,
+      user: user.uid,
     });
     return docRef.id;
   } catch (e) {
@@ -67,9 +70,13 @@ export const dislike = async (idPost, userEmail) => {
   } return arrayRemove;
 };
 
-export const editPost = (idPost, text) => {
+export const editPost = (idPost, place, city, text) => {
   const postIdEdit = doc(db, "post", idPost);
-  return updateDoc(postIdEdit, { textPost: text });
+  return updateDoc(postIdEdit, {
+    textPlace: place,
+    textCity: city,
+    textPost: text,
+  });
 };
 
 export function deletePost(item) {
