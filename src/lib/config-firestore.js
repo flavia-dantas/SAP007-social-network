@@ -70,9 +70,13 @@ export const dislike = async (idPost, userEmail) => {
   } return arrayRemove;
 };
 
-export const editPost = (idPost, text) => {
+export const editPost = (idPost, place, city, text) => {
   const postIdEdit = doc(db, "post", idPost);
-  return updateDoc(postIdEdit, { textPost: text });
+  return updateDoc(postIdEdit, {
+    textPlace: place,
+    textCity: city,
+    textPost: text,
+  });
 };
 
 export function deletePost(item) {
