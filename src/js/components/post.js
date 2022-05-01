@@ -8,9 +8,9 @@ import {
 import { auth } from "../../lib/config-auth.js";
 
 export function postComponent(post) {
-  const userEmail = auth.currentUser.email;
-
-  const isAuthor = post.userEmail === userEmail;
+  const userId = auth.currentUser.uid;
+  const postId = post.id;
+  const isAuthor = post.user === userId;
   const likePost = post.like;
   const postsContainer = document.createElement("div");
   postsContainer.classList.add("container-post");
@@ -21,19 +21,21 @@ export function postComponent(post) {
   };
 
   const templatePost = `   
-            <div class="user-perfil">
-            <h4 class="user-email">${post.userName}</h4>
-            <p class="date-post">${(convertTimestamp(post.date))}</p>
+        <div class="user-perfil">
+          <h4 class="user-name">${post.userName}</h4>
+          <p class="date-post">${(convertTimestamp(post.date))}</p>
         </div>
         <div class="post-field">
-            <p id="userPost" class="user-post">${post.textPost}</p>
+          <p id="textPlace" class="text-place">${post.textPlace}</p>
+          <p id="textCity" class="text-city">${post.textCity}</p>
+          <p id="textPost" class="text-post">${post.textPost}</p>
         </div>
         <div class="user-interactions">
             <div class="like-post">
                 <button id="btnLike" class="btn-like">
-                    <img id="imgLike" class="img-like" ${likePost.includes(userEmail) ? 'src="./img/icon-like.png"' : 'src="./img/icon-like-empty.png"'} alt="button-like">
+                    <img id="imgLike" class="img-like" ${likePost.includes(userId) ? 'src="./img/icon-like.png"' : 'src="./img/icon-like-empty.png"'} alt="button-like">
                 </button>
-                <p id="numLikes" class="num-likes">${post.like.length}</p>
+                <p id="numLikes" class="num-likes">${likePost.length}</p>
             </div>
             ${isAuthor ? `
             <div class="edit-post">
@@ -58,18 +60,18 @@ export function postComponent(post) {
   const heart = postsContainer.querySelector("#imgLike");
 
   btnLike.addEventListener("click", () => {
-    if (!likePost.includes(userEmail)) {
-      like(post.id, userEmail).then(() => {
+    if (!likePost.includes(userId)) {
+      like(postId, userId).then(() => {
         heart.setAttribute("src", "./img/icon-like.png");
-        likePost.push(userEmail);
+        likePost.push(userId);
         const showLike = Number(numLikes.innerHTML) + 1;
         numLikes.innerHTML = showLike;
         console.log(numLikes, "like");
       });
     } else {
-      dislike(post.id, userEmail).then(() => {
+      dislike(postId, userId).then(() => {
         heart.setAttribute("src", "./img/icon-like-empty.png");
-        likePost.splice(userEmail);
+        likePost.splice(userId);
         const showLike = Number(numLikes.innerHTML) - 1;
         numLikes.innerHTML = showLike;
         console.log(numLikes, "dislike");
@@ -96,7 +98,7 @@ export function postComponent(post) {
     const no = containerModal.querySelector("#buttonNo");
 
     yes.addEventListener("click", () => {
-      deletePost(post.id);
+      deletePost(postId);
       postsContainer.remove();
     });
 
@@ -117,20 +119,29 @@ export function postComponent(post) {
     });
 
     const btnEdit = postsContainer.querySelector("#btnEdit");
-    const textEditable = postsContainer.querySelector("#userPost");
+    const placeEditable = postsContainer.querySelector("#textPlace");
+    const cityEditable = postsContainer.querySelector("#textCity");
+    const postEditable = postsContainer.querySelector("#textPost");
     const btnConfirmEdit = postsContainer.querySelector("#btnConfirmEdit");
 
     btnEdit.addEventListener("click", (e) => {
       e.preventDefault();
-      textEditable.setAttribute("contenteditable", "true");
-      textEditable.focus();
+      placeEditable.setAttribute("contenteditable", "true");
+      cityEditable.setAttribute("contenteditable", "true");
+      postEditable.setAttribute("contenteditable", "true");
+      postEditable.focus();
       console.log(btnEdit, "botão editar");
     });
 
     btnConfirmEdit.addEventListener("click", (e) => {
       e.preventDefault();
-      textEditable.removeAttribute("contenteditable");
-      editPost(post.id, textEditable.textContent);
+      const postText = postEditable.textContent;
+      const cityText = cityEditable.textContent;
+      const placeText = placeEditable.textContent;
+      placeEditable.removeAttribute("contenteditable");
+      cityEditable.removeAttribute("contenteditable");
+      postEditable.removeAttribute("contenteditable");
+      editPost(postId, postText, cityText, placeText);
     });
   }
 

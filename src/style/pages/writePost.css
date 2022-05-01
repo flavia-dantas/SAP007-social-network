@@ -1,32 +1,65 @@
 @import '../variables.css';
 
 .container-write-post {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin-top: 10vh;
     margin-bottom: 10vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    min-width: 320px;
+    min-height: 455px;
+}
+
+.title-post{
+    margin: 10% 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.input-place, .input-city{
+    border-radius: 8px;
+    margin-bottom: 2%;
+    font-size: 1rem;
+    border:2px solid var(--selective-yellow);
+    margin-top: 8px;
+    width: 280px;
+    height: 25px;
 }
 
 .post-content{
-    width: 80%;
+    width: 280px;
     height: 25vh;
+    font-size: 1rem;
     border: 3px solid var(--selective-yellow);
     border-radius: 10px;
     margin: 5% 0;
+    resize: none;
 }
 
 .message-post{
     text-align: center;
     color: var(--venetian-red);
 }
+
 .btn-post {
-    border-radius: 8px;
+    width: 280px;
     height: 35px;
-    width: 80%;
     background-color: var(--selective-yellow);
-    border-color: var(--selective-yellow);
+    border:2px solid var(--selective-yellow);
+    border-radius: 8px;
     margin-top: 2%;     
-    font-size: 16px;    
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-post:hover{
+    background-color: var(--mikado-yellow);
 }

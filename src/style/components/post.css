@@ -18,9 +18,35 @@
     padding: 1% 2%;
 }
 
+.user-name{
+    font-size:  1.1rem; ;
+}
+
+.date-post{
+    font-size:  0.9rem; ;
+    color: var(--shadow);
+}
+
+.text-place{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.text-city{
+    font-size: 0.9rem;;
+}
+
+.text-post{
+    margin-bottom: 2%;
+    margin-top: 1%;
+    font-size: 0.9rem;
+    word-wrap: break-word;
+}
+
 .post-field{
     display: flex;
-    padding: 2%;
+    flex-direction: column;
+    margin: 2%;
 }
 
 .user-interactions{
