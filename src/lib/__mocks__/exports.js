@@ -1,4 +1,10 @@
-export const getAuth = jest.fn();
+export const getAuth = jest.fn()
+  .mockReturnValue({
+    currentUser: {
+      email: "user@user.com",
+      name: "User Name",
+    },
+  });
 export const createUserWithEmailAndPassword = jest
   .fn()
 //   .mockResolvedValueOnce("first call")
