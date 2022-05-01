@@ -21,14 +21,14 @@ export function postComponent(post) {
   };
 
   const templatePost = `   
-            <div class="user-perfil">
-            <h4 class="user-email">${post.userName}</h4>
-            <p class="date-post">${(convertTimestamp(post.date))}</p>
+        <div class="user-perfil">
+          <h4 class="user-name">${post.userName}</h4>
+          <p class="date-post">${(convertTimestamp(post.date))}</p>
         </div>
         <div class="post-field">
-            <p id="placePost" class="place-post">${post.textPlace}</p>
-            <p id="cityPost" class="city-post">${post.textCity}</p>
-            <p id="userPost" class="user-post">${post.textPost}</p>
+          <p id="textPlace" class="text-place">${post.textPlace}</p>
+          <p id="textCity" class="text-city">${post.textCity}</p>
+          <p id="textPost" class="text-post">${post.textPost}</p>
         </div>
         <div class="user-interactions">
             <div class="like-post">
@@ -119,20 +119,29 @@ export function postComponent(post) {
     });
 
     const btnEdit = postsContainer.querySelector("#btnEdit");
-    const textEditable = postsContainer.querySelector("#userPost");
+    const placeEditable = postsContainer.querySelector("#textPlace");
+    const cityEditable = postsContainer.querySelector("#textCity");
+    const postEditable = postsContainer.querySelector("#textPost");
     const btnConfirmEdit = postsContainer.querySelector("#btnConfirmEdit");
 
     btnEdit.addEventListener("click", (e) => {
       e.preventDefault();
-      textEditable.setAttribute("contenteditable", "true");
-      textEditable.focus();
+      placeEditable.setAttribute("contenteditable", "true");
+      cityEditable.setAttribute("contenteditable", "true");
+      postEditable.setAttribute("contenteditable", "true");
+      postEditable.focus();
       console.log(btnEdit, "botão editar");
     });
 
     btnConfirmEdit.addEventListener("click", (e) => {
       e.preventDefault();
-      textEditable.removeAttribute("contenteditable");
-      editPost(postId, textEditable.textContent);
+      const postText = postEditable.textContent;
+      const cityText = cityEditable.textContent;
+      const placeText = placeEditable.textContent;
+      placeEditable.removeAttribute("contenteditable");
+      cityEditable.removeAttribute("contenteditable");
+      postEditable.removeAttribute("contenteditable");
+      editPost(postId, postText, cityText, placeText);
     });
   }
 
