@@ -62,7 +62,6 @@
 .error-message{
     text-align: center;
     color: var(--venetian-red);
-    margin-top: 5px;
     font-size: 0.7rem;
     margin-top: 2%;
     font-weight: bold;
