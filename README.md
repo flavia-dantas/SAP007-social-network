@@ -15,9 +15,10 @@
 * [6. Histórias de usuário](#6-histórias-de-usuário)
 * [7. Protótipos](#7-protótipos)
 * [8. Testes de usabilidade](#8-testes-de-usabilidade)
-* [9. Features](#9-features)
-* [10. Tecnologias utilizadas](#10-tecnologias-utilizadas)
-* [11. Pessoas desenvolvedoras](#11-pessoas-desenvolvedoras)
+* [9. Páginas Responsivas](#9-páginas-responsivas)
+* [10. Features](#10-features)
+* [11. Tecnologias utilizadas](#11-tecnologias-utilizadas)
+* [12. Pessoas desenvolvedoras](#12-pessoas-desenvolvedoras)
 
 ***
 ## 1. Sobre
@@ -28,8 +29,7 @@ O objetivo principal de aprendizagem foi construir uma [Single-page Application
 (SPA)](https://pt.wikipedia.org/wiki/Aplicativo_de_p%C3%A1gina_%C3%BAnica)
 [_responsiva_](https://curriculum.laboratoria.la/pt/topics/css/02-responsive) (com mais de uma tela/ página) na qual seja possível ler e escrever dados.
 
-![adem-ay-Tk9m_HP4rgQ-unsplash](https://user-images.githubusercontent.com/110297/135544666-4efa54f1-4ff6-4c4c-b398-6df04ef56117.jpg)
-
+![gif](src/img/goodfood.gif)
 ## 2. Acesso
 
 O deploy do projeto foi realizado pelo Git Pages. [Clique aqui](https://gabrielamedrado.github.io/SAP007-social-network/) para acessá-lo.
@@ -136,7 +136,16 @@ Após os testes de usabilidade, algumas funções que não estavam no escopo ini
 - Os usuários também acharam viável ter mais dois campos para inserir cidade e nome do estabelecimento ao fazer uma publicação. Inserimos estes campos e agora ao clicar em compartilhar, mais dois inputs são abertos indicando que ele deve preencher esses campos, além da mensagem em si.
 
 - A cor de fundo de todas as páginas inicialmente foi um amarelo claro, retirado da paleta de cores que foi resultado do nosso logotipo, porém, muitos usuários apontaram que mesmo uma cor clara, torna a visualização cansativa. Decidimos então deixar a cor padrão branca para resolver esse problema.
-## 9. Features
+
+
+## 9. Páginas Responsivas 
+
+A aplicação funciona em dispositivos de tela grande (computadores, laptops etc.) e pequena (tablets, telefones celulares etc.). Abaixo um exemplo da aplicação em tablet.
+
+![Responsive register](src/img/responsive.register.jpg)
+![Responsive feed](src/img/reponsive-feed.jpg)
+
+## 10. Features
 
 - [x] **Criar usuário com nome, e-mail e senha**
 - [x] **Fazer login com e-mail e senha**
@@ -146,7 +155,7 @@ Após os testes de usabilidade, algumas funções que não estavam no escopo ini
 - [x] **Deletar publicações**
 - [x] **Curtir publicações**
 
-## 10. Tecnologias utilizadas
+## 11. Tecnologias utilizadas
 
 - **HTML**
 - **CSS**
@@ -155,7 +164,7 @@ Após os testes de usabilidade, algumas funções que não estavam no escopo ini
 - **Firestore**
 - **Firebase Auth**
 
-## 11. Pessoas desenvolvedoras
+## 12. Pessoas desenvolvedoras
 
 Este projeto foi desenvolvido durante o Bootcamp da Laboratória, Turma 007 pelas colaboradoras: 
 
