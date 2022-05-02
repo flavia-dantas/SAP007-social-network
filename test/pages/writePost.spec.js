@@ -16,7 +16,7 @@ const inputPlace = fnWritePost.querySelector("#inputPlace");
 const inputCity = fnWritePost.querySelector("#inputCity");
 
 describe("writePost", () => {
-  it("writePost success ", async () => {
+  it("writePost success", async () => {
     postContent.value = "Este sorvete é uma delícia. Meus preferidos são de nutella e kinder bueno!";
     inputCity.value = "Campo Grande";
     inputPlace.value = "Sésamo";
@@ -28,6 +28,7 @@ describe("writePost", () => {
     expect(createPost).toHaveBeenCalledWith(inputPlace.value, inputCity.value, postContent.value);
     expect(window.location.hash).toBe("#feed");
   });
+
   it("writePost shows message empty postContent ", async () => {
     postContent.value = "";
 
