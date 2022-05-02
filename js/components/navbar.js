@@ -1,11 +1,11 @@
-import '../../lib/config-firebase.js';
-import { userLogout } from '../../lib/config-auth.js';
+import "../../lib/config-firebase.js";
+import { userLogout } from "../../lib/config-auth.js";
 
 export function navbar() {
-    const container = document.createElement("nav");
-    container.classList.add("container-nav");
+  const container = document.createElement("nav");
+  container.classList.add("container-nav");
 
-    const template = `
+  const template = `
     <button id="btnHome" class="btn-home">
         <img src="./img/icon-home.png" alt="button-home">
     </button>
@@ -17,30 +17,30 @@ export function navbar() {
     </button>
     `;
 
-    container.innerHTML = template;
+  container.innerHTML = template;
 
-    const btnHome = container.querySelector('#btnHome');
-    const btnNewPost = container.querySelector('#btnNewPost');
-    const btnLogout = container.querySelector('#btnLogout');
+  const btnHome = container.querySelector("#btnHome");
+  const btnNewPost = container.querySelector("#btnNewPost");
+  const btnLogout = container.querySelector("#btnLogout");
 
-    btnHome.addEventListener("click", () => {
-        window.location.hash = '#feed';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+  btnHome.addEventListener("click", () => {
+    window.location.hash = "#feed";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
-    btnNewPost.addEventListener("click", () => {
-        window.location.hash = '#writePost';
-    });
+  btnNewPost.addEventListener("click", () => {
+    window.location.hash = "#writePost";
+  });
 
-    btnLogout.addEventListener("click", () => {
-        userLogout()
-            .then(() => {
-                window.location.hash = '#login';
-                console.log("usuario desconectado!")
-            }).catch((error) => {
-                return error;
-            });
-    })
+  btnLogout.addEventListener("click", () => {
+    userLogout()
+      .then(() => {
+        window.location.hash = "#login";
+        console.log("usuario desconectado!");
+      }).catch(() => {
+      //   return error;
+      });
+  });
 
-    return container;
+  return container;
 }

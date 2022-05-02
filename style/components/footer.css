@@ -1,0 +1,29 @@
+@import '../variables.css';
+
+.container-footer{
+    width: 100vw;
+    height: 6vh ;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    position: fixed;
+    z-index: 1;
+    border-top: 1px solid var(--selective-yellow);
+    background-color: white;
+}
+
+.footer-text{
+    width: 100vw;
+    display: flex;
+    font-size: 0.8rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+   
+}
+
+.github{
+    padding: 0 0.5%;
+    color: black;
+    cursor: pointer;
+}

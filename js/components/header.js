@@ -1,12 +1,12 @@
 export function header() {
-    const container = document.createElement("header");
-    container.classList.add("container-header");
+  const container = document.createElement("header");
+  container.classList.add("container-header");
 
-    const template = `
+  const template = `
     <img class="logo-header" src="./img/icon-goodfood.png" alt="logo-header">
     `;
 
-    container.innerHTML = template;
+  container.innerHTML = template;
 
-    return container;
+  return container;
 }
