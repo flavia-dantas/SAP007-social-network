@@ -32,7 +32,7 @@ O objetivo principal de aprendizagem foi construir uma [Single-page Application
 
 ## 2. Acesso
 
-O deploy do projeto foi realizado pelo Git Pages. [Clique aqui]( ) para acessá-lo.
+O deploy do projeto foi realizado pelo Git Pages. [Clique aqui](https://gabrielamedrado.github.io/SAP007-social-network/) para acessá-lo.
 ## 3. Pré-requisitos para instalação
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: [Git](https://git-scm.com), [Node.js](https://node.js.org/en/), e editor de código como por exemplo o [VSCode](https://code.visualstudio.com/).
@@ -51,25 +51,25 @@ $ npm start
 ```
 ## 4. Definição de produto
 
-Tendo em vista que os consumidores hoje, têm muitas opções de escolha na hora visitar um restaurante ou fazer o pedido da sua comida preferida pela internet, mas que preparar uma boa refeição em casa também virou uma mania nacional, decidimos que o tema seria voltado para gastronomia e criamos um formulário com algumas perguntas que nos ajudaram a definir o foco da nossa Rede Social.
+Tendo em vista que os consumidores hoje, têm diversas opções de escolha na hora visitar um restaurante ou pedir comidas pela internet, mas que preparar uma boa refeição em casa também virou mania nacional, decidimos que o tema seria voltado para gastronomia e criamos um formulário com algumas perguntas que nos ajudaram a definir o foco da nossa Rede Social.
 ### Pesquisa 
 
 Entrevistamos 41 pessoas e a maioria mostrou interesse em fazer parte de uma rede social onde fosse possível compartilhar dicas e ter recomendações de estabelecimentos gastronômicos.
 
 * **Sobre o interesse pelo tema:** 85,4% dos entrevistados informaram que costumam fazer pesquisas na internet sobre receitas e estabelecimentos gastronômicos.
 
-![Pesquisa.01](src/img/pesquisa.01.jpg)
+![Pesquisa.01](src/img/pesquisa.01.JPG)
 
 * **Sobre o foco da Rede Social:** 75,6% dos entrevistados informaram que fariam parte de uma rede social com dicas de estabelecimentos gastronômicos.
 
-![Pesquisa.02](src/img/pesquisa.02.jpg)
+![Pesquisa.02](src/img/pesquisa.02.JPG)
 
 
 ## 5. Planejamento
 
 O planejamento das tarefas foi realizado no Trello. [Clique aqui](https://trello.com/b/8XGRRl7U/social-network-scrum) para acessá-lo.
 
-Primeiro separamos um card para cada história de usuário e nele inserimos os checklists das atividades necessárias para sua conclusão. Depois fomos "quebrando" essas atividades em pequenas tarefas e etiquetando de acordo com a Sprint e História de usuário. A medida que cada tarefa era concluída, transferíamos os cards para a aba de "Feito" e assim fizemos também com os cards das Histórias de usuário que estavam sendo concluídas.
+Para cada história de usuário, separamos um card e nele inserimos os checklists das atividades necessárias para sua conclusão da história. Depois fomos "quebrando" essas atividades em pequenas tarefas e etiquetando de acordo com a Sprint e História de usuário que as contemplavam. A medida que cada tarefa era concluída, transferíamos os cards para a aba "Feito" e assim fizemos também com os cards das Histórias de usuário que iam sendo concluídas.
 
 Mantivemos as abas "Backlog do Projeto" e "Links para Estudo" sem alterações para nos certificarmos de executar todas as funcionalidades propostas para o aceite do projeto. 
 
@@ -123,13 +123,13 @@ _Definição de pronto_:  foi criada a função "like" que está disponível em 
 
 ### 7. Protótipos
 
-Utilizamos o Figma para desenhar o protótipo de alta fidelidade. O desenho abaixo demonstra o fluxo que será encontrado pelo usuário ao acessar a aplicação.
+Utilizamos o Figma para desenhar o protótipo de alta fidelidade. O desenho abaixo demonstra o fluxo a ser encontrado pelo usuário ao acessar a aplicação.
 
 ![Protótipo Celular](src/img/prot%C3%B3tipo.cel.JPG)
 
 ## 8. Testes de usabilidade
 
-Após alguns testes de usabilidade, algumas funções que não estavam no escopo inicial foram adicionadas no projeto. Abaixo iremos descrever o que motivou e quais foram essas modificações.
+Após os testes de usabilidade, algumas funções que não estavam no escopo inicial foram adicionadas no projeto. Abaixo iremos descrever o que as motivou e quais foram essas modificações.
 
 - Ao clicar no ícone para dar likes, a contagem de likes aumentaria, mas não era visível para o usuário que ele havia curtido tal publicação. Para resolver isso, inserimos uma função que faz com que o ícone mude de cor para vermelho assim que o usuário dá o like, e volta para transparente quando ele desfaz a ação.
 
