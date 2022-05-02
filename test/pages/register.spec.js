@@ -14,7 +14,6 @@ describe("page register", () => {
     const btn = registerUser.querySelector("#btnRegister");
     btn.dispatchEvent(new Event("click"));
     const errorMessage = registerUser.querySelector("#errorMessage");
-    console.log(errorMessage);
     expect(errorMessage.textContent).toBe("Por favor, preencha todos os campos.");
   });
 });

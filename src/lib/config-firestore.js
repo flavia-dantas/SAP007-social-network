@@ -61,7 +61,6 @@ export const like = async (idPost, userEmail) => {
 export const dislike = async (idPost, userEmail) => {
   try {
     const docId = doc(db, "post", idPost);
-    console.log(idPost);
     return await updateDoc(docId, {
       like: arrayRemove(userEmail),
     });

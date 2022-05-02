@@ -61,7 +61,6 @@ export function postComponent(post) {
         likePost.push(userId);
         const showLike = Number(numLikes.innerHTML) + 1;
         numLikes.innerHTML = showLike;
-        console.log(numLikes, "like");
       });
     } else {
       dislike(postId, userId).then(() => {
@@ -69,7 +68,6 @@ export function postComponent(post) {
         likePost.splice(userId);
         const showLike = Number(numLikes.innerHTML) - 1;
         numLikes.innerHTML = showLike;
-        console.log(numLikes, "dislike");
       });
     }
   });
@@ -106,11 +104,9 @@ export function postComponent(post) {
 
   if (isAuthor) {
     const btnDelete = postsContainer.querySelector("#btnDelete");
-    console.log(btnDelete);
     btnDelete.addEventListener("click", (e) => {
       e.preventDefault();
       postsContainer.appendChild(confirmDelete());
-      console.log(confirmDelete);
     });
 
     const btnEdit = postsContainer.querySelector("#btnEdit");
@@ -125,7 +121,6 @@ export function postComponent(post) {
       cityEditable.setAttribute("contenteditable", "true");
       postEditable.setAttribute("contenteditable", "true");
       postEditable.focus();
-      console.log(btnEdit, "botão editar");
     });
 
     btnConfirmEdit.addEventListener("click", (e) => {
