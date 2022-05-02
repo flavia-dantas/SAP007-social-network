@@ -121,7 +121,6 @@ export function postComponent(post) {
       postEditable.focus();
       btnConfirmEdit.style.display = "block";
       btnEdit.style.display = "none";
-      
     });
 
     btnConfirmEdit.addEventListener("click", (e) => {
