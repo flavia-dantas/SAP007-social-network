@@ -14,11 +14,11 @@
 }
 
 .logo {
-    width: 50%;
+    width: 200px;
     display: flex;
     margin: 0 auto;
     align-items: center;
-    padding: 5% 0;
+    padding: 5%;
 }
 
 .title {
@@ -62,7 +62,6 @@
 .error-message{
     text-align: center;
     color: var(--venetian-red);
-    margin-top: 5px;
     font-size: 0.7rem;
     margin-top: 2%;
     font-weight: bold;
@@ -115,4 +114,54 @@
     color: var(--venetian-red);
     font-weight: bold;  
     cursor: pointer;
+}
+
+/*RESPONSIVO PARA TABLETS*/
+@media screen and (min-width:481px) and (max-width:960px){
+    .container-login {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+    }
+    
+    .logotipo{
+        width: 100vw;
+        height: 50vh;
+    }
+
+    .logo {
+        width: 280px;
+        padding: 2%;
+    }
+
+    .form-login {
+        margin: auto;
+    }
+}
+
+/*RESPONSIVO PARA DESKTOP*/
+@media screen and (min-width:961px) and (max-width:1440px){
+    .container-login {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .logotipo{
+        width: 60vw;
+        height: 100vh;
+        display: flex; 
+    }
+    
+    .logo {
+        width: 500px;
+        margin: 10%;
+        padding: 10%;
+    }
+
+    .form-login {
+        margin: auto;
+    }
 }
