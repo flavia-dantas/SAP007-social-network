@@ -36,7 +36,6 @@ export function navbar() {
     userLogout()
       .then(() => {
         window.location.hash = "#login";
-        console.log("usuario desconectado!");
       }).catch(() => {
       //   return error;
       });
