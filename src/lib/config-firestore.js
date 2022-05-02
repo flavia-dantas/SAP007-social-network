@@ -26,7 +26,7 @@ export const createPost = async (place, city, text) => {
       textPost: text,
       userName: user.displayName,
       email: user.email,
-      date: new Date(),
+      date: new Date().toLocaleString("pt-br"),
       like: [],
       user: user.uid,
     });

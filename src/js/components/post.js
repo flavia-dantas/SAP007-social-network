@@ -15,15 +15,10 @@ export function postComponent(post) {
   const postsContainer = document.createElement("div");
   postsContainer.classList.add("container-post");
 
-  const convertTimestamp = (timestamp) => {
-    const date = timestamp.toDate();
-    return date.toLocaleString("pt-br");
-  };
-
   const templatePost = `   
         <div class="user-perfil">
           <h4 class="user-name">${post.userName}</h4>
-          <p class="date-post">${(convertTimestamp(post.date))}</p>
+          <p class="date-post">${post.date}</p>
         </div>
         <div class="post-field">
           <p id="textPlace" class="text-place">${post.textPlace}</p>

@@ -25,6 +25,7 @@ describe("writePost", () => {
 
     expect(errorMessage.textContent).toBe("");
     expect(createPost).toHaveBeenCalledTimes(1);
+    expect(createPost).toHaveBeenCalledWith(inputPlace.value, inputCity.value, postContent.value);
     expect(window.location.hash).toBe("#feed");
   });
   it("writePost shows message empty postContent ", async () => {

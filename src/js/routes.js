@@ -39,7 +39,6 @@ const redirect = () => {
 
 const init = () => {
   window.addEventListener("hashchange", () => {
-    console.log(window.location.hash);
     main.innerHTML = "";
     redirect();
   });
