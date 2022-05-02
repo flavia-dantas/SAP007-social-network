@@ -1,5 +1,6 @@
 import "../../lib/config-firebase.js";
 import { signIn, googleLogin } from "../../lib/config-auth.js";
+import { footer } from "../components/footer.js";
 
 export default function login() {
   const container = document.createElement("section");
@@ -9,7 +10,7 @@ export default function login() {
             <img class="logo" src="./img/logo.png" alt="logo">
         </div>
         <form class="form-login">
-          <h3 class="title">Login</h3>
+          <h3 class="title-login">Login</h3>
           <label class="label-form">E-mail
               <span class="required-item">*</span>
           </label>
@@ -20,13 +21,14 @@ export default function login() {
           <input type="password" id="inputPassword" class="input-password" placeholder="******" minlength="6" required/>
           <p id="errorMessage" class="error-message"></p>
           <button type="submit" id="btnLogin" class="btn-login">Entrar</button>
-          <p class="subtitle">ou</p>
+          <p class="subtitle-login">ou</p>
           <button id="btnGoogle" class="btn-google"><img class="google-logo" src="./img/icon-google.png">Fazer login com Google</button>
           <p class="text-login">Não tem uma conta? <a class="option-register" href="#register">Cadastre-se</a></p>
         </form>
     </div>
     `;
-  container.innerHTML = template;
+  container.innerHTML += template;
+  container.appendChild(footer());
 
   const email = container.querySelector("#inputEmail");
   const password = container.querySelector("#inputPassword");

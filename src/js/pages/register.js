@@ -1,5 +1,6 @@
 import "../../lib/config-firebase.js";
 import { createUser, googleLogin } from "../../lib/config-auth.js";
+import { footer } from "../components/footer.js";
 
 export default function register() {
   const container = document.createElement("section");
@@ -10,7 +11,7 @@ export default function register() {
         <img class="logo" src="./img/logo.png" alt="logo">
         </div>
         <form class="form-register">
-          <h3 class="register">Cadastro</h3>
+          <h3 class="title-register">Cadastro</h3>
           <label class="label-form">Nome
             <span class="required-item">*</span>
           </label>
@@ -25,13 +26,14 @@ export default function register() {
           <input type="password" id="inputPassword" class="input-password" placeholder="******" minlength="6">
           <p id="errorMessage" class="error-message"></p>
           <button id="btnRegister" class="btn-register">Cadastrar</button>
-          <p class="subtitle">ou</p>
+          <p class="subtitle-register">ou</p>
           <button id="btnGoogle" class="btn-google"><img class="google-logo" src="./img/icon-google.png">Inscreva-se com Google</button>
           <p class="text-register">Tem uma conta? <a class= "option-login" href="#login">Conecte-se</a></p>
         </form>
     </div>
     `;
-  container.innerHTML = template;
+  container.innerHTML += template;
+  container.appendChild(footer());
 
   const userName = container.querySelector("#inputName");
   const email = container.querySelector("#inputEmail");
