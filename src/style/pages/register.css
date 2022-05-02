@@ -14,14 +14,14 @@
 }
 
 .logo{
-    width: 50%;
+    width: 190px;
     display: flex;
     margin: 0 auto;
     align-items: center;
-    padding: 5% 0;
+    padding: 5%;
 }
 
-.register {
+.title-register {
     text-align: center;
     color: var(--venetian-red);
     margin: 3% 0;
@@ -30,7 +30,7 @@
 .form-register{
     display: flex;
     min-width: 320px;
-    min-height: 455px;
+    min-height: 430px;
     align-content: center;
     flex-direction: column;
     flex-wrap: wrap;
@@ -39,7 +39,7 @@
     margin: 0 auto;
 }
 
-.required-item, .subtitle {
+.required-item{
     color: var(--venetian-red);
     font-weight: bold;  
 }
@@ -54,9 +54,11 @@
     height: 25px;
 }
 
-.subtitle{
+.subtitle-register{
     text-align: center;
-    margin: 3% 0;
+    margin: 1% 0;
+    color: var(--venetian-red);
+    font-weight: bold;  
 }
 
 .error-message{
@@ -74,7 +76,7 @@
     background-color: var(--selective-yellow);
     border:2px solid var(--selective-yellow);
     border-radius: 8px;
-    margin-top: 10%;
+    margin-top: 8%;
     margin-bottom: 3%;
     font-size: 1rem;
     cursor: pointer;
@@ -92,4 +94,54 @@
     color: var(--venetian-red);
     font-weight: bold;  
     cursor: pointer;
+}
+
+/*RESPONSIVO PARA TABLETS*/
+@media screen and (min-width:481px) and (max-width:960px){
+    .container-register {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+    }
+    
+    .logotipo{
+        width: 100vw;
+        height: 25vh;
+    }
+
+    .logo {
+        width: 260px;
+        padding: 2%;
+    }
+    
+    .form-register {
+        margin: 2% auto;
+    }
+}
+
+/*RESPONSIVO PARA DESKTOP*/
+@media screen and (min-width:961px) and (max-width:1440px){
+    .container-register {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .logotipo{
+        width: 60vw;
+        height: 100vh;
+        display: flex; 
+    }
+    
+    .logo {
+        width: 500px;
+        margin: 10%;
+        padding: 10%;
+    }
+
+    .form-register{
+        margin: auto;
+    }
 }

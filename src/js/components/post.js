@@ -34,14 +34,12 @@ export function postComponent(post) {
             </div>
             ${isAuthor ? `
             <div class="edit-post">
-                <button id="btnConfirmEdit" class="btn-confirm-edit">
+                <button id="btnConfirmEdit" class="btn-confirm-edit" style="display:none">
                     <img src="./img/icon-confirm.png" alt="button-confirm-edit">
                 </button>
-                <button id="btnEdit" class="btn-edit">
+                <button id="btnEdit" class="btn-edit" style="display:block">
                     <img src="./img/icon-edit.png" alt="button-edit">
                 </button>
-            </div>
-            <div class="delete-post">
                 <button id="btnDelete" class="btn-delete">
                     <img src="./img/icon-delete.png" alt="button-delete">
                 </button>
@@ -121,6 +119,9 @@ export function postComponent(post) {
       cityEditable.setAttribute("contenteditable", "true");
       postEditable.setAttribute("contenteditable", "true");
       postEditable.focus();
+      btnConfirmEdit.style.display = "block";
+      btnEdit.style.display = "none";
+      
     });
 
     btnConfirmEdit.addEventListener("click", (e) => {
@@ -131,6 +132,8 @@ export function postComponent(post) {
       placeEditable.removeAttribute("contenteditable");
       cityEditable.removeAttribute("contenteditable");
       postEditable.removeAttribute("contenteditable");
+      btnEdit.style.display = "block";
+      btnConfirmEdit.style.display = "none";
       editPost(postId, postText, cityText, placeText);
     });
   }

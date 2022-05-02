@@ -14,14 +14,14 @@
 }
 
 .logo {
-    width: 50%;
+    width: 190px;
     display: flex;
     margin: 0 auto;
     align-items: center;
-    padding: 5% 0;
+    padding: 5%;
 }
 
-.title {
+.title-login {
     text-align: center;
     color: var(--venetian-red);
     margin: 3% 0;
@@ -30,7 +30,7 @@
 .form-login {
     display: flex;
     min-width: 320px;
-    min-height: 455px;
+    min-height: 430px;
     align-content: center;
     flex-direction: column;
     flex-wrap: wrap;
@@ -39,14 +39,16 @@
     margin: 0 auto;
 }
 
-.required-item, .subtitle {
+.required-item {
     color: var(--venetian-red);
     font-weight: bold;  
 }
 
-.subtitle{
+.subtitle-login{
     text-align: center;
     margin: 3% 0;
+    color: var(--venetian-red);
+    font-weight: bold;  
 }
 
 .input-email, .input-password {
@@ -90,7 +92,7 @@
     font-size: 1rem;
     border:2px solid var(--selective-yellow);
     border-radius: 8px;
-    margin: 3% 0;
+    margin: 2% 0;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -114,4 +116,54 @@
     color: var(--venetian-red);
     font-weight: bold;  
     cursor: pointer;
+}
+
+/*RESPONSIVO PARA TABLETS*/
+@media screen and (min-width:481px) and (max-width:960px){
+    .container-login {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+    }
+    
+    .logotipo{
+        width: 100vw;
+        height: 25vh;
+    }
+
+    .logo {
+        width: 260px;
+        padding: 2%;
+    }
+
+    .form-login {
+        margin: 2% auto;
+    }
+}
+
+/*RESPONSIVO PARA DESKTOP*/
+@media screen and (min-width:961px) and (max-width:1440px){
+    .container-login {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .logotipo{
+        width: 60vw;
+        height: 100vh;
+        display: flex; 
+    }
+    
+    .logo {
+        width: 500px;
+        margin: 10%;
+        padding: 10%;
+    }
+
+    .form-login {
+        margin: auto;
+    }
 }
