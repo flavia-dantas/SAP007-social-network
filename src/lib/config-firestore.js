@@ -26,7 +26,7 @@ export const createPost = async (place, city, text) => {
       textPost: text,
       userName: user.displayName,
       email: user.email,
-      date: new Date(),
+      date: new Date().toLocaleString("pt-br"),
       like: [],
       user: user.uid,
     });
@@ -61,7 +61,6 @@ export const like = async (idPost, userEmail) => {
 export const dislike = async (idPost, userEmail) => {
   try {
     const docId = doc(db, "post", idPost);
-    console.log(idPost);
     return await updateDoc(docId, {
       like: arrayRemove(userEmail),
     });

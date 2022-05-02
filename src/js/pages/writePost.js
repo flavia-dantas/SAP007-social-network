@@ -42,7 +42,7 @@ export default function writePost() {
     if (postContent.value === "" || inputCity.value === "" || inputPlace.value === "") {
       errorMessage.innerHTML = "O campo está vazio, verifique.";
     } else if (inputCity.value.length < 2 && inputPlace.value.length < 2) {
-      errorMessage.innerHTML = "Cidade e Estabelecimento deverão ser maior que 2 caracteres";
+      errorMessage.innerHTML = "Cidade e Estabelecimento deverão ser maior que 2 caracteres.";
     } else if (postContent.value.length < 20) {
       errorMessage.innerHTML = "Sua indicação deverá ser maior que 20 caracteres";
     } else {

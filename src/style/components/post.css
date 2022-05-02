@@ -19,11 +19,11 @@
 }
 
 .user-name{
-    font-size:  1.1rem; ;
+    font-size:  1.1rem;
 }
 
 .date-post{
-    font-size:  0.9rem; ;
+    font-size:  0.9rem;
     color: var(--shadow);
 }
 
@@ -38,6 +38,7 @@
     font-size: 0.9rem;
     word-wrap: break-word;
     padding: 1% 0;
+
 }
 
 .text-post{
