@@ -30,17 +30,20 @@
 .text-place{
     font-weight: bold;
     font-size: 1rem;
+    word-wrap: break-word;
+    padding: 1% 0;
 }
 
 .text-city{
-    font-size: 0.9rem;;
+    font-size: 0.9rem;
+    word-wrap: break-word;
+    padding: 1% 0;
 }
 
 .text-post{
-    margin-bottom: 2%;
-    margin-top: 1%;
     font-size: 0.9rem;
     word-wrap: break-word;
+    padding: 2% 0;
 }
 
 .post-field{
@@ -53,6 +56,7 @@
     display: flex;
     border-top: 1px solid var(--selective-yellow);
     padding: 1% 2%;
+    justify-content: space-between;
 }
 
 .like-post{
@@ -64,9 +68,10 @@
     margin: 0 10%; 
 }
 
-.edit-post, .delete-post{
+.edit-post{
     display: flex;
     justify-content: flex-end;
+    margin-left: 60%;
 }
 
 .btn-like, .btn-confirm-edit, .btn-edit, .btn-delete{
@@ -136,4 +141,18 @@
 
 .img-like:active {
     animation: animate 1s;
+}
+
+/*RESPONSIVO PARA TABLETS*/
+@media screen and (min-width:481px) and (max-width:960px){
+    .container-post{
+        width: 60%;
+    }
+}
+
+/*RESPONSIVO PARA DESKTOP*/
+@media screen and (min-width:961px) and (max-width:1440px){
+    .container-post{
+        width: 50%;
+    }
 }
