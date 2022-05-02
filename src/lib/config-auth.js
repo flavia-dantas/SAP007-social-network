@@ -11,12 +11,10 @@ import {
 
 export const auth = getAuth();
 const provider = new GoogleAuthProvider();
-// const user = auth.createUser;
 
 export function createUser(name, email, password) {
   return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
       const user = userCredential.user;
       updateProfile(auth.currentUser, {
         displayName: name,
@@ -32,7 +30,6 @@ export function userLogout() {
 export function signIn(email, password) {
   return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
       const user = userCredential.user;
       return user;
     });

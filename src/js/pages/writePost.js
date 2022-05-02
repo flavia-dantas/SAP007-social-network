@@ -8,23 +8,23 @@ export default function writePost() {
   const container = document.createElement("section");
   const template = `    
     <div class="container-write-post">
-        <div class="container">
-          <p class="title-post">Compartilhe sua indicação</p>
-          <label class="label-form">Nome do Estabelecimento
-            <span class="required-item">*</span>
-          </label>
-          <input type="text" id="inputPlace" class="input-place" placeholder="Estabelecimento" autocomplete="off">
-          <label class="label-form">Cidade
-            <span class="required-item">*</span>
-          </label>
-          <input type="text" id="inputCity" class="input-city" placeholder="Cidade" autocomplete="off">
-          <label class="label-form">Sua indicação
-            <span class="required-item">*</span>
-          </label>
-          <textarea id="postContent" class="post-content" rows="5" cols="30" placeholder="Compartilhe sua experiência aqui..."></textarea>
-          <p id="errorMessage" class="error-message"></p>
-          <button id="btnPost" class="btn-post">Postar</button>
-        </div>
+      <div class="container">
+        <p class="title-post">Compartilhe sua indicação</p>
+        <label class="label-form">Nome do Estabelecimento
+          <span class="required-item">*</span>
+        </label>
+        <input type="text" id="inputPlace" class="input-place" placeholder="Estabelecimento" autocomplete="off">
+        <label class="label-form">Cidade
+          <span class="required-item">*</span>
+        </label>
+        <input type="text" id="inputCity" class="input-city" placeholder="Cidade" autocomplete="off">
+        <label class="label-form">Sua indicação
+          <span class="required-item">*</span>
+        </label>
+        <textarea id="postContent" class="post-content" rows="5" cols="30" placeholder="Compartilhe sua experiência aqui..."></textarea>
+        <p id="errorMessage" class="error-message"></p>
+        <button id="btnPost" class="btn-post">Postar</button>
+      </div>
     </div>`;
 
   container.appendChild(header());

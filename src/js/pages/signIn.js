@@ -6,25 +6,25 @@ export default function login() {
   const container = document.createElement("section");
   const template = `
     <div class="container-login">
-        <div class="logotipo">
-            <img class="logo" src="./img/logo.png" alt="logo">
-        </div>
-        <form class="form-login">
-          <h3 class="title-login">Login</h3>
-          <label class="label-form">E-mail
-              <span class="required-item">*</span>
-          </label>
-          <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exemplo.com" autocomplete="on" required/>
-          <label class="label-form">Senha 
-              <span class="required-item">*</span>
-          </label>
-          <input type="password" id="inputPassword" class="input-password" placeholder="******" minlength="6" required/>
-          <p id="errorMessage" class="error-message"></p>
-          <button type="submit" id="btnLogin" class="btn-login">Entrar</button>
-          <p class="subtitle-login">ou</p>
-          <button id="btnGoogle" class="btn-google"><img class="google-logo" src="./img/icon-google.png">Fazer login com Google</button>
-          <p class="text-login">Não tem uma conta? <a class="option-register" href="#register">Cadastre-se</a></p>
-        </form>
+      <div class="logotipo">
+        <img class="logo" src="./img/logo.png" alt="logo">
+      </div>
+      <form class="form-login">
+        <h3 class="title-login">Login</h3>
+        <label class="label-form">E-mail
+          <span class="required-item">*</span>
+        </label>
+        <input type="email" id="inputEmail" class="input-email" placeholder="exemplo@exemplo.com" autocomplete="on" required/>
+        <label class="label-form">Senha 
+          <span class="required-item">*</span>
+        </label>
+        <input type="password" id="inputPassword" class="input-password" placeholder="******" minlength="6" required/>
+        <p id="errorMessage" class="error-message"></p>
+        <button type="submit" id="btnLogin" class="btn-login">Entrar</button>
+        <p class="subtitle-login">ou</p>
+        <button id="btnGoogle" class="btn-google"><img class="google-logo" src="./img/icon-google.png">Fazer login com Google</button>
+        <p class="text-login">Não tem uma conta? <a class="option-register" href="#register">Cadastre-se</a></p>
+      </form>
     </div>
     `;
   container.innerHTML += template;
