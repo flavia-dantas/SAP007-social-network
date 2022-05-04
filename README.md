@@ -32,14 +32,14 @@ O objetivo principal de aprendizagem foi construir uma [Single-page Application
 ![gif](src/img/goodfood.gif)
 ## 2. Acesso
 
-O deploy do projeto foi realizado pelo Git Pages. [Clique aqui](https://gabrielamedrado.github.io/SAP007-social-network/) para acessá-lo.
+O deploy do projeto foi realizado pelo Git Pages. [Clique aqui](https://flavia-dantas.github.io/SAP007-social-network/) para acessá-lo.
 ## 3. Pré-requisitos para instalação
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: [Git](https://git-scm.com), [Node.js](https://node.js.org/en/), e editor de código como por exemplo o [VSCode](https://code.visualstudio.com/).
 ### Rodando o projeto
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/GabrielaMedrado/SAP007-social-network.git>
+$ git clone <https://github.com/flavia-dantas/SAP007-social-network.git>
 # Acesse o repositório do projeto pelo terminal/cmd
 $ cd SAP007-social-network
 # Instale as dependências
